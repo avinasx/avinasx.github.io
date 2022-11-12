@@ -1,3 +1,3 @@
-# CodeChari.github.io
+# avinasx.github.io
 Portfolio
 
