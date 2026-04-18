@@ -141,6 +141,7 @@
       padding: 1.2rem 0 2rem;
       text-align: center;
     }
+    .noscript-note { padding-bottom: 1rem; color: var(--muted); }
 
     @media (max-width: 900px) {
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
@@ -349,6 +350,10 @@
     <div class="container">© <span id="year"></span> Avinash Kr Shudhanshu</div>
   </footer>
 
+
+  <noscript>
+    <div class="container noscript-note">JavaScript is disabled: resume links will open the local file <code>CV_Avinash.pdf</code>.</div>
+  </noscript>
   <script>
     // **IMPORTANT: REPLACE THIS RESUME LINK ANYTIME YOU WANT TO UPDATE THE PORTFOLIO RESUME URL**
     const RESUME_LINK = "https://drive.google.com/file/d/1-x66zw0cSyefAEsYsyDoRBcwBmArWxTU/view?usp=sharing";
