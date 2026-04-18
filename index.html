@@ -3,163 +3,405 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avinash Kr Shudhanshu | Full Stack Engineer</title>
-  <meta name="description" content="Portfolio of Avinash Kr Shudhanshu — Full Stack Engineer." />
+  <title>Avinash Kumar Shudhanshu | Portfolio</title>
+  <meta name="description" content="Portfolio of Avinash Kumar Shudhanshu - Software Engineer, Backend, Full-Stack, Gen-AI, ML." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0b1020;
-      --bg-soft: #121a31;
-      --card: #131d37;
-      --text: #e6ecff;
-      --muted: #a7b0cf;
+      --bg-soft: #111a33;
+      --card: #121b34;
+      --text: #f1f5ff;
+      --muted: #afbbdc;
+      --line: #2e3f6f;
       --primary: #6ea8fe;
-      --accent: #8c7bff;
-      --border: #26345e;
-      --ok: #92f2c6;
-      --max: 1120px;
+      --accent: #8d79ff;
+      --ok: #5ef2c6;
+      --max: 1160px;
+      --shadow: 0 18px 46px rgba(3, 8, 20, 0.45);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at 10% 10%, #1a2a54 0%, var(--bg) 40%), var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 500px at -10% -5%, rgba(110, 168, 254, 0.28), transparent 60%),
+        radial-gradient(1000px 500px at 110% 0%, rgba(141, 121, 255, 0.24), transparent 60%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a { color: var(--primary); text-decoration: none; }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
     a:hover { text-decoration: underline; }
 
-    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
-    .section { padding: 72px 0; }
-    .section-title {
-      font-size: clamp(1.35rem, 2vw, 2rem);
-      margin: 0 0 1rem;
-      letter-spacing: 0.02em;
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
     }
-    .section-subtitle { color: var(--muted); margin: 0 0 2rem; }
 
-    .nav-wrap {
+    .section { padding: 1.3rem 0 3rem; }
+
+    .topbar {
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(11, 16, 32, 0.72);
-      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 13, 28, 0.78);
     }
-    .nav {
-      height: 64px;
+
+    .topbar nav {
+      min-height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
-    .brand { font-weight: 800; letter-spacing: 0.05em; color: #fff; }
-    .links { display: flex; flex-wrap: wrap; gap: 0.9rem; }
-    .links a { color: var(--muted); font-weight: 600; font-size: 0.92rem; }
-    .links a:hover { color: #fff; text-decoration: none; }
 
-    .hero { padding: 90px 0 50px; }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: white;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: flex-end;
+    }
+
+    .menu a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .menu a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 2.5rem 0 1.8rem;
+    }
+
     .hero-card {
-      background: linear-gradient(145deg, rgba(110,168,254,0.09), rgba(140,123,255,0.06));
-      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(110, 168, 254, 0.12), rgba(141, 121, 255, 0.08));
+      border: 1px solid var(--line);
       border-radius: 22px;
-      padding: clamp(1.2rem, 3.5vw, 2.2rem);
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 1.4rem;
+      padding: clamp(1rem, 2.5vw, 2rem);
+      box-shadow: var(--shadow);
+      animation: rise 650ms ease both;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(8px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      margin: 0;
+      line-height: 1.2;
+      font-size: clamp(1.9rem, 5.2vw, 3.1rem);
+    }
+
+    .headline {
+      margin: 0.6rem 0 1rem;
+      color: #d8e1ff;
+      font-weight: 600;
+      font-size: clamp(1.02rem, 2vw, 1.2rem);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 1rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 0.4rem 0 1rem;
+    }
+
+    .chip {
+      display: inline-flex;
       align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #37508f;
+      background: rgba(17, 26, 52, 0.85);
+      color: #dce6ff;
+      font-size: 0.88rem;
+      font-weight: 600;
     }
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #4b68b6;
-      background: #0f1730;
+
+    .chip:hover { text-decoration: none; border-color: #5d80d8; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
     }
-    .hero h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 3rem); }
-    .hero p { margin: 0.45rem 0 1rem; color: var(--muted); }
-    .hero .title { font-weight: 700; color: #d7e4ff; }
-    .cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; }
+
     .btn {
       display: inline-block;
-      border-radius: 11px;
-      padding: 0.7rem 1rem;
-      border: 1px solid var(--border);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #1a2d59;
       color: #fff;
-      background: #1a2a54;
+      padding: 0.68rem 1rem;
       font-weight: 700;
-    }
-    .btn.primary { background: linear-gradient(90deg, #416dff, #6654ff); border-color: transparent; }
-    .btn:hover { text-decoration: none; filter: brightness(1.06); }
-
-    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1rem;
+      letter-spacing: 0.01em;
     }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
-    .chip {
-      border: 1px solid #33467d;
-      border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      color: #dbe5ff;
-      font-size: 0.86rem;
-      background: #111a34;
+    .btn:hover { text-decoration: none; filter: brightness(1.07); }
+
+    .btn.primary {
+      border: none;
+      background: linear-gradient(95deg, #4475ff, #7860ff);
     }
 
-    .timeline { border-left: 2px solid #344b84; margin-left: 0.35rem; padding-left: 1rem; display: grid; gap: 1rem; }
-    .timeline-item { position: relative; }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -1.41rem;
-      top: 0.4rem;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--ok);
-      border: 2px solid #0f1730;
+    .stats {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
     }
-    .role { margin: 0; font-size: 1.03rem; }
-    .meta { color: var(--muted); font-size: 0.92rem; margin: 0.2rem 0 0.5rem; }
-    .mt-compact { margin-top: 1rem; }
 
-    ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
-    li { margin: 0.35rem 0; }
-
-    .footer {
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      padding: 1.2rem 0 2rem;
+    .stat {
+      background: rgba(9, 14, 31, 0.75);
+      border: 1px solid #30457d;
+      border-radius: 12px;
+      padding: 0.7rem;
       text-align: center;
     }
-    .noscript-note { padding-bottom: 1rem; color: var(--muted); }
 
-    @media (max-width: 900px) {
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .hero-card { grid-template-columns: 1fr; text-align: center; }
-      .avatar { margin-inline: auto; }
-      .cta { justify-content: center; }
+    .stat strong {
+      display: block;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.3vw, 2rem);
+      margin: 0 0 0.6rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.08rem;
+    }
+
+    .mini {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.93rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+    }
+
+    table {
+      border-collapse: collapse;
+      min-width: 640px;
+      width: 100%;
+      background: #10192f;
+    }
+
+    th, td {
+      border: 1px solid #2a3b66;
+      padding: 0.72rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #152140;
+      color: #dce7ff;
+      font-weight: 700;
+    }
+
+    td { color: #dde6ff; }
+
+    .timeline {
+      border-left: 2px solid #365298;
+      margin-left: 0.45rem;
+      padding-left: 1rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -1.45rem;
+      top: 1.05rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--ok);
+      border: 2px solid #0b1020;
+    }
+
+    .role {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.35;
+    }
+
+    .meta {
+      margin: 0.25rem 0 0.45rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    ul {
+      margin: 0.3rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    li { margin: 0.36rem 0; }
+
+    details {
+      border-radius: 12px;
+      border: 1px solid #344c8b;
+      background: rgba(12, 20, 41, 0.65);
+      padding: 0.62rem 0.75rem;
+      margin-top: 0.6rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #dce6ff;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      margin: 0.25rem 0.35rem 0.25rem 0;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid #36539b;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: #dbe5ff;
+      background: #0f1933;
+    }
+
+    .bars {
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.7rem;
+    }
+
+    .bar {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .bar span {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .track {
+      border-radius: 999px;
+      height: 8px;
+      background: #23355f;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #5bc6ff, #9168ff);
+      transform-origin: left;
+      animation: grow 900ms ease both;
+    }
+
+    @keyframes grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .footer {
+      margin-top: 0.7rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 1.1rem 0 2rem;
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .grid.two,
+      .grid.three,
+      .stats { grid-template-columns: 1fr; }
+      .menu { display: none; }
     }
   </style>
 </head>
 <body>
-  <header class="nav-wrap">
-    <nav class="container nav" aria-label="Primary">
+  <header class="topbar">
+    <nav class="container" aria-label="Primary">
       <div class="brand">AVINASH</div>
-      <div class="links">
+      <div class="menu">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#education">Education</a>
+        <a href="#credentials">Credentials</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </div>
@@ -167,141 +409,277 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section id="about" class="hero">
       <div class="container hero-card">
-        <img class="avatar" src="./images/avatar.jpg" alt="Avinash Kr Shudhanshu" />
-        <div>
-          <h1>Avinash Kr Shudhanshu</h1>
-          <p class="title">Full Stack Engineer</p>
-          <p>
-            I design and build secure, scalable products across backend, frontend, cloud, and data-driven systems.
-          </p>
-          <div class="chips" aria-label="social links">
-            <a class="chip" href="https://github.com/avinasx" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="chip" href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="chip" href="https://www.researchgate.net/profile/Avinash_Shudhanshu" target="_blank" rel="noopener noreferrer">ResearchGate</a>
-            <a class="chip" href="https://stackexchange.com/users/8009309/codechari?tab=accounts" target="_blank" rel="noopener noreferrer">StackExchange</a>
-          </div>
-          <div class="cta">
-            <a class="btn primary" href="#contact">Get in touch</a>
-            <a class="btn resume-link" href="./CV_Avinash.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-          </div>
+        <h1>Avinash Kumar Shudhanshu</h1>
+        <p class="headline">Software Engineer | Backend | Full-Stack | Gen-AI | ML | DU</p>
+        <div class="hero-meta">
+          <span><strong>Email:</strong> <a href="mailto:avinashsudhanshu@gmail.com">avinashsudhanshu@gmail.com</a></span>
+          <span><strong>Phone:</strong> <a href="tel:+919711163013">+91-9711163013</a></span>
+          <span><strong>Location:</strong> India</span>
         </div>
-      </div>
-    </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="section-subtitle">
-          Full Stack Engineer with production experience in JavaScript, TypeScript, PHP, Python, and Java.
-          I focus on resilient architecture, clean delivery, security-minded engineering, and practical cloud operations.
-          I also enjoy robotics prototyping with motors, actuators, and sensors.
-        </p>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="grid-3">
-          <article class="card">
-            <h3>Languages</h3>
-            <div class="chips">
-              <span class="chip">JavaScript</span>
-              <span class="chip">TypeScript</span>
-              <span class="chip">Python</span>
-              <span class="chip">PHP</span>
-              <span class="chip">Java</span>
-            </div>
-          </article>
-          <article class="card">
-            <h3>Backend & APIs</h3>
-            <div class="chips">
-              <span class="chip">Microservices</span>
-              <span class="chip">REST</span>
-              <span class="chip">gRPC</span>
-              <span class="chip">CI/CD</span>
-              <span class="chip">Git</span>
-            </div>
-          </article>
-          <article class="card">
-            <h3>Cloud & Data</h3>
-            <div class="chips">
-              <span class="chip">AWS</span>
-              <span class="chip">Azure</span>
-              <span class="chip">MySQL</span>
-              <span class="chip">MongoDB</span>
-              <span class="chip">Key-Value Stores</span>
-            </div>
-          </article>
+        <div class="socials" aria-label="Social links">
+          <a class="chip" href="https://avinasx.github.io" target="_blank" rel="noopener noreferrer">Website</a>
+          <a class="chip" href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="chip" href="https://github.com/avinasx" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="chip" href="https://stackexchange.com/users/8009309/codechari?tab=accounts" target="_blank" rel="noopener noreferrer">StackExchange</a>
+          <a class="chip" href="https://www.researchgate.net/profile/Avinash_Shudhanshu" target="_blank" rel="noopener noreferrer">ResearchGate</a>
         </div>
-      </div>
-    </section>
 
-    <section id="experience" class="section">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-          <article class="timeline-item card">
-            <h3 class="role">SDE Backend — <a href="https://docquity.com/" target="_blank" rel="noopener noreferrer">Docquity</a></h3>
-            <p class="meta">Gurugram, India · Aug 2022 – Present</p>
-            <ul>
-              <li>Built and scaled backend services for one of Asia’s largest learning networks for doctors.</li>
-              <li>Worked on Community, Gamification, and Live Poll systems.</li>
-            </ul>
-          </article>
+        <div class="actions">
+          <a class="btn primary resume-link" href="./CV_Avinash.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+          <a class="btn" href="#experience">Explore Experience</a>
+        </div>
 
-          <article class="timeline-item card">
-            <h3 class="role">Software Engineer — <a href="https://zenarate.com/" target="_blank" rel="noopener noreferrer">Zenarate</a></h3>
-            <p class="meta">Gurugram, India · Jun 2021 – Jul 2022</p>
-            <ul>
-              <li>Designed and delivered AI-coach related features for simulation-based agent training.</li>
-              <li>Contributed to chatbot design, development, and deployment workflows.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item card">
-            <h3 class="role">Programmer — <a href="https://docs.samarth.ac.in/" target="_blank" rel="noopener noreferrer">Samarth eGov, Ministry of Education</a></h3>
-            <p class="meta">New Delhi, India · Jun 2019 – May 2021</p>
-            <ul>
-              <li>Built university automation modules under the National Mission in Education through ICT.</li>
-              <li>Delivered E-Housing, Legal, Programme-Student Management, Admissions, CDU, Student Lifecycle, and Grievance components.</li>
-            </ul>
-          </article>
+        <div class="stats" aria-label="Profile highlights">
+          <div class="stat"><strong>7+ Years</strong><span>Engineering Experience</span></div>
+          <div class="stat"><strong>5 Roles</strong><span>Across Product Domains</span></div>
+          <div class="stat"><strong>GenAI + RAG</strong><span>Production Delivery</span></div>
+          <div class="stat"><strong>AWS • Azure • GCP</strong><span>Cloud Engineering</span></div>
         </div>
       </div>
     </section>
 
     <section id="education" class="section">
       <div class="container">
-        <h2 class="section-title">Education, Certifications & Awards</h2>
-        <div class="grid-2">
+        <h2 class="section-title">Academic Profile</h2>
+        <p class="section-desc">Education details aligned to the latest resume format.</p>
+        <div class="table-wrap card">
+          <table aria-label="Academic profile table">
+            <thead>
+              <tr>
+                <th>Degree</th>
+                <th>Year</th>
+                <th>Major</th>
+                <th>Institution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>M.Sc. Informatics</strong></td>
+                <td>2019</td>
+                <td>Information Technology and Computer Networks</td>
+                <td>University of Delhi</td>
+              </tr>
+              <tr>
+                <td><strong>B.Sc. Electronics</strong></td>
+                <td>2017</td>
+                <td>Electronics and Communication</td>
+                <td>University of Delhi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <p class="section-desc">Total Experience: 7 Years</p>
+        <div class="timeline">
+          <article class="card item">
+            <h3 class="role">Technical Lead — Carlyle Group (Vichara), Remote, India</h3>
+            <p class="meta">Feb 2026 – Current | Domain: Investment Banking | <a href="https://www.carlyle.com/" target="_blank" rel="noopener noreferrer">carlyle.com</a></p>
+            <details open>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Architected a benchmark-driven pricing engine integrating Snowflake and Postgres to automate scalable, audit-grade market yield computation with AI-assisted validation and financial time-series analytics.</li>
+                <li>Designed cross-system data architecture for weighted benchmarks, versioned compositions, and dynamic rate resolution (WA yield, illiquidity premium, risk adjustments) with caching and batch optimisation.</li>
+                <li>Built high-performance analytics pipelines and Snowflake service layers enabling idempotent ingestion, data quality controls, and anomaly-aware coverage tracking.</li>
+                <li>Preserved backward compatibility by decoupling AI-enabled discount-rate resolution from legacy cashflow models, ensuring deterministic and regression-safe valuations.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="card item">
+            <h3 class="role">Senior Software Engineer — Incyte (RL), Bengaluru, India</h3>
+            <p class="meta">Aug 2024 – Feb 2026 | Domain: Pharma R&amp;D | <a href="https://incyte.com/" target="_blank" rel="noopener noreferrer">incyte.com</a></p>
+            <details>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Designed and developed AI agents for drug discovery applications, leveraging RAG for intelligent document and media processing with Python (FastAPI), WebSocket, and WebRTC.</li>
+                <li>Developed end-to-end pipelines for ingestion, indexing, and querying, integrating AWS S3, OpenSearch, and DynamoDB for scalable storage and retrieval.</li>
+                <li>Implemented and optimized RAG pipelines including embedding strategies, vector search, and retrieval patterns with LangChain, LangGraph, LangSmith, and vector databases.</li>
+                <li>Worked across AWS and Azure cloud ecosystems while integrating GenAI models such as OpenAI, Gemini, and Claude.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="card item">
+            <h3 class="role">Software Development Engineer — Docquity, Gurugram, India</h3>
+            <p class="meta">Aug 2022 – May 2024 | Domain: Healthcare | <a href="https://docquity.com/" target="_blank" rel="noopener noreferrer">docquity.com</a></p>
+            <details>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Re-engineered monolithic architecture into microservices and introduced gRPC for inter-service communication, improving retrieval and scale.</li>
+                <li>Built services for community, webinars, content management, and real-time processing serving thousands of concurrent users.</li>
+                <li>Developed content services for text, audio, and video with Spring Boot (Java), Python, MongoDB, Redis, gRPC, Jenkins, Docker, and WebSocket.</li>
+                <li>Built community features for doctor interactions (join, invite, exit, block) using Python (Django), Node.js, PHP, MySQL, and AWS.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="card item">
+            <h3 class="role">Software Engineer — Zenarate, Gurugram, India</h3>
+            <p class="meta">Jun 2021 – Jul 2022 | Domain: Finance | <a href="https://www.zenarate.com/" target="_blank" rel="noopener noreferrer">zenarate.com</a></p>
+            <details>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Worked as full-stack developer to add new features for the AI Coach product and business workflows.</li>
+                <li>Implemented WCAG accessibility support (VoiceOver on macOS and JAWS on Windows).</li>
+                <li>Added scheduling features to create stories of AI chat and audio sessions, improving KPI performance by 30%.</li>
+                <li>Added spell-check and grammar-check features and integrated GenAI capabilities with OpenAI.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="card item">
+            <h3 class="role">Programmer (Full Stack) — Samarth eGov (IIC UDSC), New Delhi, India</h3>
+            <p class="meta">Jun 2019 – May 2021 | Domain: EdTech | <a href="https://docs.samarth.ac.in/" target="_blank" rel="noopener noreferrer">docs.samarth.ac.in</a></p>
+            <details>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Built scalable web applications capable of serving lakhs of concurrent users during peak hours.</li>
+                <li>Developed pan-India university recruitment module using PHP, MySQL, JavaScript, and TensorFlow integrations.</li>
+                <li>Built online examination and evaluation stack with PHP, JavaScript, MySQL, Python (Django), and Node.js.</li>
+                <li>Built evaluation and verification systems enabling paperless generation and verification of academic documents.</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid two">
           <article class="card">
-            <h3>Education</h3>
+            <h3>Technical Expertise</h3>
+            <p class="mini">Programming & Frameworks</p>
+            <div>
+              <span class="skill-pill">Python (FastAPI, Django, Flask, Pandas, NumPy)</span>
+              <span class="skill-pill">JavaScript (Node.js)</span>
+              <span class="skill-pill">TypeScript (Nest.js)</span>
+              <span class="skill-pill">PHP</span>
+              <span class="skill-pill">Java</span>
+            </div>
+            <p class="mini">Protocols & Messaging</p>
+            <div>
+              <span class="skill-pill">RESTful APIs</span>
+              <span class="skill-pill">gRPC</span>
+              <span class="skill-pill">WebSockets</span>
+              <span class="skill-pill">SSE</span>
+              <span class="skill-pill">Async Queues</span>
+              <span class="skill-pill">Pub/Sub</span>
+              <span class="skill-pill">MCPs</span>
+            </div>
+            <p class="mini">Databases & Search</p>
+            <div>
+              <span class="skill-pill">MySQL</span>
+              <span class="skill-pill">MongoDB</span>
+              <span class="skill-pill">PostgreSQL</span>
+              <span class="skill-pill">DynamoDB</span>
+              <span class="skill-pill">OpenSearch</span>
+              <span class="skill-pill">Redis</span>
+              <span class="skill-pill">Snowflake</span>
+              <span class="skill-pill">Pinecone</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Cloud, DevOps & GenAI</h3>
+            <div>
+              <span class="skill-pill">AWS (EC2, S3, SQS, SES, Lambda, CloudFront, CloudFormation)</span>
+              <span class="skill-pill">Azure</span>
+              <span class="skill-pill">GCP</span>
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">Jenkins</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">Kubernetes</span>
+              <span class="skill-pill">Terraform</span>
+              <span class="skill-pill">CI/CD</span>
+              <span class="skill-pill">LangFlow</span>
+              <span class="skill-pill">MLflow</span>
+              <span class="skill-pill">LLM Fine-tuning</span>
+            </div>
+            <p class="mini">RAG & Orchestration</p>
+            <div>
+              <span class="skill-pill">LangChain</span>
+              <span class="skill-pill">LangGraph</span>
+              <span class="skill-pill">LangSmith</span>
+              <span class="skill-pill">Vector DBs</span>
+              <span class="skill-pill">OpenAI</span>
+              <span class="skill-pill">Gemini</span>
+              <span class="skill-pill">Anthropic</span>
+              <span class="skill-pill">Embeddings</span>
+              <span class="skill-pill">Retrieval Strategies</span>
+              <span class="skill-pill">Chunking Approaches</span>
+              <span class="skill-pill">PyTorch</span>
+            </div>
+            <p class="mini">Tooling & Soft Skills</p>
+            <div>
+              <span class="skill-pill">JIRA</span>
+              <span class="skill-pill">Confluence</span>
+              <span class="skill-pill">MS-365</span>
+              <span class="skill-pill">GitHub</span>
+              <span class="skill-pill">GitLab</span>
+              <span class="skill-pill">Azure DevOps</span>
+              <span class="skill-pill">JetBrains IDEs</span>
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Windsurf</span>
+              <span class="skill-pill">Cursor</span>
+              <span class="skill-pill">Copilot</span>
+            </div>
+            <div class="bars" aria-label="Skill infographics">
+              <div class="bar"><span>Backend & APIs</span><div class="track"><div class="fill" style="width:96%"></div></div></div>
+              <div class="bar"><span>Cloud & DevOps</span><div class="track"><div class="fill" style="width:91%"></div></div></div>
+              <div class="bar"><span>GenAI, RAG & LLM Integrations</span><div class="track"><div class="fill" style="width:93%"></div></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials" class="section">
+      <div class="container">
+        <h2 class="section-title">Certifications, Awards & Projects</h2>
+        <div class="grid three">
+          <article class="card">
+            <h3>Certifications</h3>
             <ul>
-              <li><strong>M.Sc. Informatics</strong> — Institute of Informatics and Communication, University of Delhi</li>
-              <li>Network Admin (UDSC), maintenance of campus area network; member of student grievance committee</li>
-              <li><strong>B.Sc. Electronics (Phy Sc)</strong> — Acharya Narendra Dev College, University of Delhi</li>
-              <li>Established Robotics and Automation Lab; member of SPIE</li>
+              <li>Network Security Expert 2 (Associate) — Fortinet</li>
+              <li>Machine Learning — Stanford Online</li>
+              <li>CompTIA Security+ — Cybrary</li>
+              <li>Burp Suite — Udemy</li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>Certifications</h3>
+            <h3>Awards & Scholarships</h3>
             <ul>
-              <li>Network Security Expert 2 — Fortinet</li>
-              <li>Machine Learning — Stanford Online</li>
-              <li>Comptia Security+ — Cybrary</li>
-              <li>Burp Suite — Udemy</li>
-            </ul>
-            <h3 class="mt-compact">Awards & Scholarships</h3>
-            <ul>
-              <li>First prize, Project Presentation Competition, 7th National Level Science Symposium (Rajkot, Feb 2014)</li>
+              <li>First Prize, Project Presentation Competition, 7th National Level Science Symposium (Rajkot, 2014)</li>
               <li>ELITE Fellowship, Acharya Narendra Dev College</li>
-              <li>Google India Scholarship — Front End Web Developer</li>
+              <li>Google India Scholarship (Front End Web Developer)</li>
               <li>JBT Merit-Cum-Means Scholarship (2018)</li>
             </ul>
+          </article>
+
+          <article class="card">
+            <h3>Projects & Trainings</h3>
+            <details open>
+              <summary>Selected projects and internships</summary>
+              <ul>
+                <li>SAMARTH eGov process automation for universities and higher-education institutions.</li>
+                <li>Sakshat unified learning management system.</li>
+                <li>CowinActionNetwork initiative to support underprivileged communities during COVID-19.</li>
+                <li>MHRD-funded innovation project: Development of low-cost computer-controlled science laboratory.</li>
+                <li>CareTaker Robot under e-Yantra (NMEICT).</li>
+                <li>Full Stack Web Development (Yii2), Data Acquisition with National Instruments LabView, Robotics Boot Camp, and national workshop on optics/fibre communication.</li>
+              </ul>
+            </details>
           </article>
         </div>
       </div>
@@ -310,36 +688,44 @@
     <section id="publications" class="section">
       <div class="container">
         <h2 class="section-title">Publications</h2>
-        <div class="grid-2">
-          <article class="card">
-            <h3>Error Reduction in Basic Science Laboratory through Sensors and Open Source Technology</h3>
-            <p class="meta">Int. J. of Recent Trends in Engineering & Technology, Vol. 11, Issue 2, June 2014, pp. 313–319</p>
-          </article>
-          <article class="card">
-            <h3>Development of Open Source Low Cost Wireless Data Acquisition Systems for Science Experiments</h3>
-            <p class="meta">International Journal of Information & Computation Technology, Vol. 4, No. 12 (2014), pp. 1123–1128</p>
-          </article>
-        </div>
+        <p class="section-desc">Research and conference contributions from resume records.</p>
+        <article class="card">
+          <details open>
+            <summary>View publications</summary>
+            <ul>
+              <li>Error Reduction in Basic Science Laboratory through Sensors and Open Source Technology, Int. J. of Recent Trends in Engineering &amp; Technology, Vol. 11, Issue 2, June 2014, pp. 313-319.</li>
+              <li>Development of Open Source Low Cost Wireless Data Acquisition Systems for Science Experiments, International Journal of Information &amp; Computation Technology, Vol. 4, No. 12 (2014), pp. 1123-1128, <a href="http://www.irphouse.com" target="_blank" rel="noopener noreferrer">irphouse.com</a>.</li>
+              <li>Development of Low Cost and User-Friendly Medical Diagnostic Tools, Journal of Basic and Applied Engineering Research, Vol. 1, No. 9, October 2014, pp. 80-82.</li>
+              <li>Automated Approaches to Advance Undergraduate Research, Proceedings of national conference, ISBN 978-81-7273-958-4, October 2014, pp. 324-330.</li>
+              <li>Low Cost and User-Friendly Environmental Monitoring System, National Conference on Recent Trends in Instrumentation and Electronics, ISBN 978-81-930724-0-0, January 2015, pp. 10-14.</li>
+            </ul>
+          </details>
+        </article>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="container">
         <h2 class="section-title">Contact</h2>
-        <div class="grid-2">
+        <div class="grid two">
           <article class="card">
             <h3>Direct</h3>
             <ul>
               <li><strong>Email:</strong> <a href="mailto:avinashsudhanshu@gmail.com">avinashsudhanshu@gmail.com</a></li>
-              <li><strong>Phone:</strong> +91-9711163013</li>
-              <li><strong>Location:</strong> India</li>
+              <li><strong>Phone:</strong> <a href="tel:+919711163013">+91-9711163013</a></li>
               <li><strong>Website:</strong> <a href="https://avinasx.github.io" target="_blank" rel="noopener noreferrer">avinasx.github.io</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" rel="noopener noreferrer">linkedin.com/in/avinash-kumar-shudhanshu-3aa13327</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/avinasx" target="_blank" rel="noopener noreferrer">github.com/avinasx</a></li>
             </ul>
           </article>
+
           <article class="card">
             <h3>Resume</h3>
-            <p>Use the button below to open the latest resume link.</p>
-            <a class="btn resume-link" href="./CV_Avinash.pdf" target="_blank" rel="noopener noreferrer">Open Resume</a>
+            <p class="mini">Open the latest resume using the centralized link constant below.</p>
+            <div class="actions">
+              <a class="btn primary resume-link" href="./CV_Avinash.pdf" target="_blank" rel="noopener noreferrer">Open Resume</a>
+              <a class="btn" href="#about">Back to Top</a>
+            </div>
           </article>
         </div>
       </div>
@@ -347,21 +733,16 @@
   </main>
 
   <footer class="footer">
-    <div class="container">© <span id="year"></span> Avinash Kr Shudhanshu</div>
+    <div class="container">© <span id="year"></span> Avinash Kumar Shudhanshu</div>
   </footer>
 
-
-  <noscript>
-    <div class="container noscript-note">JavaScript is disabled: resume links will open the local file <code>CV_Avinash.pdf</code>.</div>
-  </noscript>
   <script>
-    // **IMPORTANT: REPLACE THIS RESUME LINK ANYTIME YOU WANT TO UPDATE THE PORTFOLIO RESUME URL**
+    // === !!! IMPORTANT: UPDATE ONLY THIS CONSTANT TO CHANGE RESUME URL EVERYWHERE !!! ===
     const RESUME_LINK = "https://drive.google.com/file/d/1-x66zw0cSyefAEsYsyDoRBcwBmArWxTU/view?usp=sharing";
 
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.querySelectorAll(".resume-link").forEach((link) => {
-      link.href = RESUME_LINK;
+    document.querySelectorAll(".resume-link").forEach((node) => {
+      node.href = RESUME_LINK;
     });
   </script>
 </body>
