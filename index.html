@@ -654,7 +654,7 @@
     <section id="about" class="hero">
       <div class="container hero-card">
         <div class="hero-intro">
-          <img class="profile-photo" src="./images/avatar.jpg" alt="Portrait of Avinash Kumar Shudhanshu" loading="lazy" />
+          <img class="profile-photo" src="./images/avatar.jpg" alt="Portrait of Avinash Kumar Shudhanshu" />
           <div>
             <h1>Avinash Kumar Shudhanshu</h1>
             <p class="headline">Software Engineer | Backend | Full-Stack | Gen-AI | ML | DU</p>
@@ -1024,7 +1024,7 @@
     function openDrawer() {
       drawer.classList.add("open");
       drawer.hidden = false;
-      drawer.removeAttribute("inert");
+      drawer.inert = false;
       drawer.setAttribute("aria-hidden", "false");
       hamburger.classList.add("open");
       hamburger.setAttribute("aria-expanded", "true");
@@ -1041,7 +1041,7 @@
       updateHamburgerLabel(false);
       document.body.style.overflow = "";
       drawer.setAttribute("aria-hidden", "true");
-      drawer.setAttribute("inert", "");
+      drawer.inert = true;
       drawer.hidden = true;
       if (lastFocusedElement instanceof HTMLElement) {
         lastFocusedElement.focus();
