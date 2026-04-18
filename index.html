@@ -28,6 +28,7 @@
 
     body {
       margin: 0;
+      overflow-x: hidden;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background:
         radial-gradient(1200px 500px at -10% -5%, rgba(110, 168, 254, 0.28), transparent 60%),
@@ -51,13 +52,15 @@
 
     .section { padding: 1.3rem 0 3rem; }
 
+    /* ── Topbar / Nav ─────────────────────────────────────────── */
+
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
-      background: rgba(8, 13, 28, 0.78);
+      background: rgba(8, 13, 28, 0.88);
     }
 
     .topbar nav {
@@ -72,8 +75,10 @@
       font-weight: 800;
       letter-spacing: 0.05em;
       color: white;
+      flex-shrink: 0;
     }
 
+    /* Desktop nav links */
     .menu {
       display: flex;
       flex-wrap: wrap;
@@ -91,6 +96,94 @@
       color: #fff;
       text-decoration: none;
     }
+
+    /* Hamburger button — hidden on desktop */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    /* Animated to ✕ when open */
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      pointer-events: none;
+    }
+
+    .mobile-drawer.open {
+      pointer-events: all;
+    }
+
+    .drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .mobile-drawer.open .drawer-overlay {
+      opacity: 1;
+    }
+
+    .drawer-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: min(300px, 80vw);
+      background: #0e1630;
+      border-left: 1px solid var(--line);
+      padding: 5rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.open .drawer-panel {
+      transform: translateX(0);
+    }
+
+    .drawer-panel a {
+      display: block;
+      padding: 0.85rem 0;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-panel a:last-child { border-bottom: none; }
+    .drawer-panel a:hover { color: var(--primary); text-decoration: none; }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
 
     .hero {
       padding: 2.5rem 0 1.8rem;
@@ -113,14 +206,16 @@
     h1 {
       margin: 0;
       line-height: 1.2;
-      font-size: clamp(1.9rem, 5.2vw, 3.1rem);
+      font-size: clamp(1.65rem, 5.2vw, 3.1rem);
+      word-break: break-word;
     }
 
     .headline {
       margin: 0.6rem 0 1rem;
       color: #d8e1ff;
       font-weight: 600;
-      font-size: clamp(1.02rem, 2vw, 1.2rem);
+      font-size: clamp(0.88rem, 2.2vw, 1.2rem);
+      word-break: break-word;
     }
 
     .hero-meta {
@@ -130,7 +225,10 @@
       color: var(--muted);
       font-size: 0.96rem;
       margin-bottom: 1rem;
+      word-break: break-all;
     }
+
+    .hero-meta strong { white-space: nowrap; }
 
     .socials {
       display: flex;
@@ -142,6 +240,7 @@
     .chip {
       display: inline-flex;
       align-items: center;
+      min-height: 44px;
       gap: 0.35rem;
       padding: 0.45rem 0.75rem;
       border-radius: 999px;
@@ -150,6 +249,7 @@
       color: #dce6ff;
       font-size: 0.88rem;
       font-weight: 600;
+      touch-action: manipulation;
     }
 
     .chip:hover { text-decoration: none; border-color: #5d80d8; }
@@ -162,14 +262,19 @@
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
       border-radius: 12px;
       border: 1px solid var(--line);
       background: #1a2d59;
       color: #fff;
-      padding: 0.68rem 1rem;
+      padding: 0.68rem 1.1rem;
       font-weight: 700;
       letter-spacing: 0.01em;
+      touch-action: manipulation;
+      white-space: nowrap;
     }
 
     .btn:hover { text-decoration: none; filter: brightness(1.07); }
@@ -178,6 +283,8 @@
       border: none;
       background: linear-gradient(95deg, #4475ff, #7860ff);
     }
+
+    /* ── Stats grid: 4-col → 2×2 → 1-col ─────────────────────── */
 
     .stats {
       margin-top: 1rem;
@@ -205,6 +312,8 @@
       font-size: 0.82rem;
     }
 
+    /* ── Section titles ───────────────────────────────────────── */
+
     .section-title {
       font-size: clamp(1.4rem, 2.3vw, 2rem);
       margin: 0 0 0.6rem;
@@ -215,6 +324,8 @@
       margin: 0 0 1rem;
     }
 
+    /* ── Grids ────────────────────────────────────────────────── */
+
     .grid {
       display: grid;
       gap: 1rem;
@@ -222,6 +333,8 @@
 
     .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    /* ── Cards ────────────────────────────────────────────────── */
 
     .card {
       background: var(--card);
@@ -238,26 +351,29 @@
 
     .mini {
       color: var(--muted);
-      margin: 0;
+      margin: 0.6rem 0 0.35rem;
       font-size: 0.93rem;
     }
 
+    /* ── Table (academic profile) ─────────────────────────────── */
+
     .table-wrap {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-radius: 12px;
       border: 1px solid var(--line);
     }
 
     table {
       border-collapse: collapse;
-      min-width: 640px;
+      min-width: 540px;
       width: 100%;
       background: #10192f;
     }
 
     th, td {
       border: 1px solid #2a3b66;
-      padding: 0.72rem;
+      padding: 0.72rem 0.9rem;
       text-align: left;
       vertical-align: top;
     }
@@ -266,45 +382,51 @@
       background: #152140;
       color: #dce7ff;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     td { color: #dde6ff; }
 
+    /* ── Timeline ─────────────────────────────────────────────── */
+
     .timeline {
       border-left: 2px solid #365298;
-      margin-left: 0.45rem;
-      padding-left: 1rem;
+      margin-left: 0.6rem;
+      padding-left: 1.4rem;
       display: grid;
       gap: 1rem;
     }
 
     .item {
       position: relative;
-      overflow: hidden;
+      /* removed overflow:hidden — it was clipping the timeline dot */
     }
 
     .item::before {
       content: "";
       position: absolute;
-      left: -1.45rem;
+      left: -1.85rem;
       top: 1.05rem;
       width: 11px;
       height: 11px;
       border-radius: 50%;
       background: var(--ok);
       border: 2px solid #0b1020;
+      flex-shrink: 0;
     }
 
     .role {
       margin: 0;
-      font-size: 1.1rem;
-      line-height: 1.35;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      word-break: break-word;
     }
 
     .meta {
       margin: 0.25rem 0 0.45rem;
       color: var(--muted);
       font-size: 0.9rem;
+      word-break: break-word;
     }
 
     ul {
@@ -313,6 +435,8 @@
     }
 
     li { margin: 0.36rem 0; }
+
+    /* ── Accordions ───────────────────────────────────────────── */
 
     details {
       border-radius: 12px;
@@ -326,7 +450,27 @@
       cursor: pointer;
       font-weight: 700;
       color: #dce6ff;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 0.5rem;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    summary::before {
+      content: "▸";
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    details[open] > summary::before {
+      transform: rotate(90deg);
+    }
+
+    /* ── Skill pills ──────────────────────────────────────────── */
 
     .skill-pill {
       display: inline-block;
@@ -337,7 +481,10 @@
       font-size: 0.84rem;
       color: #dbe5ff;
       background: #0f1933;
+      word-break: break-word;
     }
+
+    /* ── Skill bars ───────────────────────────────────────────── */
 
     .bars {
       display: grid;
@@ -375,6 +522,8 @@
       to { transform: scaleX(1); }
     }
 
+    /* ── Footer ───────────────────────────────────────────────── */
+
     .footer {
       margin-top: 0.7rem;
       border-top: 1px solid var(--line);
@@ -384,19 +533,72 @@
       font-size: 0.94rem;
     }
 
-    @media (max-width: 980px) {
-      .grid.two,
-      .grid.three,
-      .stats { grid-template-columns: 1fr; }
-      .menu { display: none; }
+    /* ── Responsive: ≤ 900px (tablet) ─────────────────────────── */
+
+    @media (max-width: 900px) {
+      .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
+
+    /* ── Responsive: ≤ 768px (mobile) ─────────────────────────── */
+
+    @media (max-width: 768px) {
+      .menu { display: none; }
+      .hamburger { display: flex; }
+      .mobile-drawer { display: block; }
+
+      .grid.two,
+      .grid.three { grid-template-columns: 1fr; }
+
+      .hero { padding: 1.8rem 0 1.2rem; }
+      .section { padding: 1rem 0 2rem; }
+
+      .chip { font-size: 0.84rem; }
+      .role { font-size: 0.98rem; }
+    }
+
+    /* ── Responsive: ≤ 480px (small phones) ───────────────────── */
+
+    @media (max-width: 480px) {
+      .container { width: calc(100% - 1.4rem); }
+
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stat strong { font-size: 0.9rem; }
+      .stat span { font-size: 0.75rem; }
+
+      .hero-card { border-radius: 14px; }
+      .card { border-radius: 12px; padding: 0.85rem; }
+
+      h1 { font-size: clamp(1.4rem, 7vw, 1.9rem); }
+      .headline { font-size: clamp(0.82rem, 3.5vw, 1rem); }
+
+      .actions { gap: 0.55rem; }
+      .btn { font-size: 0.9rem; padding: 0.6rem 0.9rem; }
+
+      .timeline {
+        margin-left: 0.4rem;
+        padding-left: 1rem;
+      }
+
+      .item::before { left: -1.45rem; top: 0.9rem; }
+
+      .hero-meta { font-size: 0.88rem; }
+
+      details { padding: 0.5rem 0.6rem; }
+      summary { font-size: 0.9rem; }
+    }
+
+    /* ── Contact card: prevent long URLs overflowing ──────────── */
+
+    .card a, .card li { overflow-wrap: break-word; word-break: break-word; }
   </style>
 </head>
 <body>
   <header class="topbar">
     <nav class="container" aria-label="Primary">
       <div class="brand">AVINASH</div>
-      <div class="menu">
+      <!-- Desktop links -->
+      <div class="menu" id="desktopMenu">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
@@ -405,8 +607,26 @@
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </div>
+      <!-- Hamburger (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileDrawer">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="drawer-panel">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 
   <main>
     <section id="about" class="hero">
@@ -743,6 +963,41 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     document.querySelectorAll(".resume-link").forEach((node) => {
       node.href = RESUME_LINK;
+    });
+
+    // ── Mobile navigation ────────────────────────────────────────
+    const hamburger = document.getElementById("hamburger");
+    const drawer    = document.getElementById("mobileDrawer");
+    const overlay   = document.getElementById("drawerOverlay");
+
+    function openDrawer() {
+      drawer.classList.add("open");
+      hamburger.classList.add("open");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      hamburger.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    hamburger.addEventListener("click", () => {
+      drawer.classList.contains("open") ? closeDrawer() : openDrawer();
+    });
+
+    overlay.addEventListener("click", closeDrawer);
+
+    // Close drawer when any link inside it is clicked
+    drawer.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeDrawer);
+    });
+
+    // Close drawer on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeDrawer();
     });
   </script>
 </body>
