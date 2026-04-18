@@ -7,20 +7,21 @@
   <meta name="description" content="Portfolio of Avinash Kumar Shudhanshu - Software Engineer, Backend, Full-Stack, Gen-AI, ML." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #111a33;
-      --card: #121b34;
-      --text: #f1f5ff;
-      --muted: #afbbdc;
-      --line: #2e3f6f;
-      --primary: #6ea8fe;
-      --accent: #8d79ff;
-      --ok: #5ef2c6;
+      --bg: #0b0d14;
+      --bg-soft: #0e1118;
+      --card: #0f1220;
+      --text: #e8edf5;
+      --muted: #8a9ab5;
+      --line: rgba(0, 217, 197, 0.18);
+      --primary: #00d9c5;
+      --accent: #00d9c5;
+      --ok: #00d9c5;
+      --mono: 'Space Mono', 'JetBrains Mono', ui-monospace, monospace;
       --max: 1160px;
-      --shadow: 0 18px 46px rgba(3, 8, 20, 0.45);
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
     }
 
     * { box-sizing: border-box; }
@@ -30,10 +31,7 @@
       margin: 0;
       overflow-x: hidden;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 500px at -10% -5%, rgba(110, 168, 254, 0.28), transparent 60%),
-        radial-gradient(1000px 500px at 110% 0%, rgba(141, 121, 255, 0.24), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
@@ -59,8 +57,8 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-      background: rgba(8, 13, 28, 0.88);
+      border-bottom: 1px solid rgba(0, 217, 197, 0.12);
+      background: rgba(11, 13, 20, 0.92);
     }
 
     .topbar nav {
@@ -71,10 +69,28 @@
       gap: 1rem;
     }
 
+    .nav-resume {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 217, 197, 0.4);
+      background: transparent;
+      color: var(--primary);
+      padding: 0.3rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .nav-resume:hover { text-decoration: none; background: rgba(0, 217, 197, 0.08); }
+
     .brand {
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      color: white;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--primary);
       flex-shrink: 0;
     }
 
@@ -82,18 +98,25 @@
     .menu {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.85rem;
+      gap: 0.55rem;
       justify-content: flex-end;
     }
 
     .menu a {
+      font-family: var(--mono);
       color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 400;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(0, 217, 197, 0.22);
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+      transition: color 0.18s, border-color 0.18s;
     }
 
     .menu a:hover {
-      color: #fff;
+      color: var(--primary);
+      border-color: var(--primary);
       text-decoration: none;
     }
 
@@ -104,7 +127,7 @@
       justify-content: center;
       gap: 5px;
       background: none;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(0, 217, 197, 0.3);
       border-radius: 8px;
       padding: 8px 10px;
       cursor: pointer;
@@ -156,8 +179,8 @@
       right: 0;
       height: 100%;
       width: min(300px, 80vw);
-      background: #0e1630;
-      border-left: 1px solid var(--line);
+      background: #0b0d14;
+      border-left: 1px solid rgba(0, 217, 197, 0.15);
       padding: 5rem 1.5rem 2rem;
       display: flex;
       flex-direction: column;
@@ -174,10 +197,11 @@
     .drawer-panel a {
       display: block;
       padding: 0.85rem 0;
+      font-family: var(--mono);
       color: var(--text);
-      font-size: 1.05rem;
-      font-weight: 700;
-      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(0, 217, 197, 0.12);
     }
 
     .drawer-panel a:last-child { border-bottom: none; }
@@ -202,13 +226,13 @@
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #334b85;
-      box-shadow: 0 12px 26px rgba(3, 8, 20, 0.35);
+      border: 2px solid rgba(0, 217, 197, 0.4);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
     }
 
     .hero-card {
-      background: linear-gradient(145deg, rgba(110, 168, 254, 0.12), rgba(141, 121, 255, 0.08));
-      border: 1px solid var(--line);
+      background: rgba(15, 18, 32, 0.7);
+      border: 1px solid rgba(0, 217, 197, 0.15);
       border-radius: 22px;
       padding: clamp(1rem, 2.5vw, 2rem);
       box-shadow: var(--shadow);
@@ -229,9 +253,9 @@
 
     .headline {
       margin: 0.6rem 0 1rem;
-      color: #d8e1ff;
-      font-weight: 600;
-      font-size: clamp(0.88rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      font-weight: 500;
+      font-size: clamp(0.88rem, 2.2vw, 1.15rem);
       word-break: break-word;
     }
 
@@ -260,17 +284,18 @@
       align-items: center;
       min-height: 44px;
       gap: 0.35rem;
-      padding: 0.45rem 0.75rem;
+      padding: 0.45rem 0.85rem;
       border-radius: 999px;
-      border: 1px solid #37508f;
-      background: rgba(17, 26, 52, 0.85);
-      color: #dce6ff;
-      font-size: 0.88rem;
-      font-weight: 600;
+      border: 1px solid rgba(0, 217, 197, 0.35);
+      background: rgba(0, 217, 197, 0.05);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 400;
       touch-action: manipulation;
     }
 
-    .chip:hover { text-decoration: none; border-color: #5d80d8; }
+    .chip:hover { text-decoration: none; border-color: var(--primary); color: var(--primary); }
 
     .actions {
       display: flex;
@@ -284,22 +309,25 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #1a2d59;
-      color: #fff;
-      padding: 0.68rem 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 217, 197, 0.4);
+      background: transparent;
+      color: var(--primary);
+      padding: 0.65rem 1.2rem;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
       touch-action: manipulation;
       white-space: nowrap;
     }
 
-    .btn:hover { text-decoration: none; filter: brightness(1.07); }
+    .btn:hover { text-decoration: none; border-color: var(--primary); background: rgba(0, 217, 197, 0.08); }
 
     .btn.primary {
-      border: none;
-      background: linear-gradient(95deg, #4475ff, #7860ff);
+      border-color: var(--primary);
+      background: rgba(0, 217, 197, 0.12);
+      color: var(--primary);
     }
 
     /* ── Stats grid: 4-col → 2×2 → 1-col ─────────────────────── */
@@ -312,8 +340,8 @@
     }
 
     .stat {
-      background: rgba(9, 14, 31, 0.75);
-      border: 1px solid #30457d;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(0, 217, 197, 0.2);
       border-radius: 12px;
       padding: 0.7rem;
       text-align: center;
@@ -326,8 +354,9 @@
     }
 
     .stat span {
+      font-family: var(--mono);
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
     }
 
     /* ── Section titles ───────────────────────────────────────── */
@@ -335,6 +364,7 @@
     .section-title {
       font-size: clamp(1.4rem, 2.3vw, 2rem);
       margin: 0 0 0.6rem;
+      color: var(--primary);
     }
 
     .section-desc {
@@ -356,7 +386,7 @@
 
     .card {
       background: var(--card);
-      border: 1px solid var(--line);
+      border: 1px solid rgba(0, 217, 197, 0.15);
       border-radius: 16px;
       padding: 1rem;
       box-shadow: var(--shadow);
@@ -368,9 +398,12 @@
     }
 
     .mini {
-      color: var(--muted);
+      font-family: var(--mono);
+      color: var(--primary);
       margin: 0.6rem 0 0.35rem;
-      font-size: 0.93rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     /* ── Table (academic profile) ─────────────────────────────── */
@@ -379,36 +412,40 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       border-radius: 12px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(0, 217, 197, 0.15);
     }
 
     table {
       border-collapse: collapse;
       min-width: 540px;
       width: 100%;
-      background: #10192f;
+      background: #0b0d14;
     }
 
     th, td {
-      border: 1px solid #2a3b66;
+      border: 1px solid rgba(0, 217, 197, 0.1);
       padding: 0.72rem 0.9rem;
       text-align: left;
       vertical-align: top;
     }
 
     th {
-      background: #152140;
-      color: #dce7ff;
+      background: rgba(0, 217, 197, 0.07);
+      color: var(--primary);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       font-weight: 700;
       white-space: nowrap;
     }
 
-    td { color: #dde6ff; }
+    td { color: var(--text); }
 
     /* ── Timeline ─────────────────────────────────────────────── */
 
     .timeline {
-      border-left: 2px solid #365298;
+      border-left: 2px solid rgba(0, 217, 197, 0.3);
       margin-left: 0.6rem;
       padding-left: 1.4rem;
       display: grid;
@@ -417,7 +454,6 @@
 
     .item {
       position: relative;
-      /* removed overflow:hidden — it was clipping the timeline dot */
     }
 
     .item::before {
@@ -429,7 +465,7 @@
       height: 11px;
       border-radius: 50%;
       background: var(--ok);
-      border: 2px solid #0b1020;
+      border: 2px solid var(--bg);
     }
 
     .role {
@@ -457,16 +493,20 @@
 
     details {
       border-radius: 12px;
-      border: 1px solid #344c8b;
-      background: rgba(12, 20, 41, 0.65);
+      border: 1px solid rgba(0, 217, 197, 0.15);
+      background: rgba(0, 0, 0, 0.25);
       padding: 0.62rem 0.75rem;
       margin-top: 0.6rem;
     }
 
     summary {
       cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       font-weight: 700;
-      color: #dce6ff;
+      color: var(--primary);
       min-height: 44px;
       display: flex;
       align-items: center;
@@ -495,12 +535,13 @@
     .skill-pill {
       display: inline-block;
       margin: 0.25rem 0.35rem 0.25rem 0;
-      padding: 0.35rem 0.6rem;
-      border: 1px solid #36539b;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid rgba(0, 217, 197, 0.3);
       border-radius: 999px;
-      font-size: 0.84rem;
-      color: #dbe5ff;
-      background: #0f1933;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text);
+      background: rgba(0, 217, 197, 0.05);
       word-break: break-word;
     }
 
@@ -518,21 +559,22 @@
     }
 
     .bar span {
-      font-size: 0.84rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
     .track {
       border-radius: 999px;
       height: 8px;
-      background: #23355f;
+      background: rgba(0, 217, 197, 0.1);
       overflow: hidden;
     }
 
     .fill {
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #5bc6ff, #9168ff);
+      background: linear-gradient(90deg, #00d9c5, #00ffd5);
       transform-origin: left;
       animation: grow 900ms ease both;
     }
@@ -564,6 +606,7 @@
 
     @media (max-width: 768px) {
       .menu { display: none; }
+      .nav-resume { display: none; }
       .hamburger { display: flex; }
       .mobile-drawer { display: block; }
 
@@ -618,17 +661,18 @@
 <body>
   <header class="topbar">
     <nav class="container" aria-label="Primary">
-      <div class="brand">AVINASH</div>
+      <div class="brand">AK</div>
       <!-- Desktop links -->
       <div class="menu" id="desktopMenu">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#credentials">Credentials</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">01 About</a>
+        <a href="#education">02 Education</a>
+        <a href="#experience">03 Experience</a>
+        <a href="#skills">04 Skills</a>
+        <a href="#credentials">05 Credentials</a>
+        <a href="#publications">06 Publications</a>
+        <a href="#contact">07 Contact</a>
       </div>
+      <a class="nav-resume resume-link" href="./CV_Avinash.pdf" target="_blank" rel="noopener noreferrer" id="navResume">Resume</a>
       <!-- Hamburger (mobile only) -->
       <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileDrawer">
         <span></span><span></span><span></span>
@@ -640,13 +684,13 @@
   <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation" aria-hidden="true" hidden inert>
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <nav class="drawer-panel">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#credentials">Credentials</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">01 About</a>
+      <a href="#education">02 Education</a>
+      <a href="#experience">03 Experience</a>
+      <a href="#skills">04 Skills</a>
+      <a href="#credentials">05 Credentials</a>
+      <a href="#publications">06 Publications</a>
+      <a href="#contact">07 Contact</a>
     </nav>
   </div>
 
