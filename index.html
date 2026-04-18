@@ -1,551 +1,362 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avinash Kr Shudhanshu | Full Stack Engineer</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS (precompiled for production; includes the custom theme extensions previously defined inline) -->
-    <link rel="stylesheet" href="./tailwind.min.css">
-    <style>
-        /* Custom Styles for Animations and Layout */
-        body {
-            background-color: #0f172a; /* Slate 900 */
-            color: #f8fafc; /* Slate 50 */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avinash Kr Shudhanshu | Full Stack Engineer</title>
+  <meta name="description" content="Portfolio of Avinash Kr Shudhanshu — Full Stack Engineer." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121a31;
+      --card: #131d37;
+      --text: #e6ecff;
+      --muted: #a7b0cf;
+      --primary: #6ea8fe;
+      --accent: #8c7bff;
+      --border: #26345e;
+      --ok: #92f2c6;
+      --max: 1120px;
+    }
 
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 10% 10%, #1a2a54 0%, var(--bg) 40%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        .section-hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-        .section-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .section { padding: 72px 0; }
+    .section-title {
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      margin: 0 0 1rem;
+      letter-spacing: 0.02em;
+    }
+    .section-subtitle { color: var(--muted); margin: 0 0 2rem; }
 
-        /* Timeline styles */
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 16px;
-            height: 100%;
-            width: 2px;
-            background: #334155;
-        }
-        @media (min-width: 768px) {
-            .timeline-container::before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand { font-weight: 800; letter-spacing: 0.05em; color: #fff; }
+    .links { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+    .links a { color: var(--muted); font-weight: 600; font-size: 0.92rem; }
+    .links a:hover { color: #fff; text-decoration: none; }
 
-        .gradient-text {
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .hero { padding: 90px 0 50px; }
+    .hero-card {
+      background: linear-gradient(145deg, rgba(110,168,254,0.09), rgba(140,123,255,0.06));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: clamp(1.2rem, 3.5vw, 2.2rem);
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 1.4rem;
+      align-items: center;
+    }
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4b68b6;
+      background: #0f1730;
+    }
+    .hero h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 3rem); }
+    .hero p { margin: 0.45rem 0 1rem; color: var(--muted); }
+    .hero .title { font-weight: 700; color: #d7e4ff; }
+    .cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; }
+    .btn {
+      display: inline-block;
+      border-radius: 11px;
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--border);
+      color: #fff;
+      background: #1a2a54;
+      font-weight: 700;
+    }
+    .btn.primary { background: linear-gradient(90deg, #416dff, #6654ff); border-color: transparent; }
+    .btn:hover { text-decoration: none; filter: brightness(1.06); }
 
-        /* Hover effects */
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-            border-color: #0ea5e9;
-        }
-    </style>
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem;
+    }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+    .chip {
+      border: 1px solid #33467d;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      color: #dbe5ff;
+      font-size: 0.86rem;
+      background: #111a34;
+    }
+
+    .timeline { border-left: 2px solid #344b84; margin-left: 0.35rem; padding-left: 1rem; display: grid; gap: 1rem; }
+    .timeline-item { position: relative; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.41rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ok);
+      border: 2px solid #0f1730;
+    }
+    .role { margin: 0; font-size: 1.03rem; }
+    .meta { color: var(--muted); font-size: 0.92rem; margin: 0.2rem 0 0.5rem; }
+
+    ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+    li { margin: 0.35rem 0; }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 1.2rem 0 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero-card { grid-template-columns: 1fr; text-align: center; }
+      .avatar { margin-inline: auto; }
+      .cta { justify-content: center; }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white">
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel border-b-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-bold text-xl tracking-wider gradient-text">
-                    AVINASH
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-brand-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#skills" class="hover:text-brand-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                        <a href="#experience" class="hover:text-brand-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                        <a href="#education" class="hover:text-brand-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Education & More</a>
-                        <a href="#contact" class="hover:text-brand-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+  <header class="nav-wrap">
+    <nav class="container nav" aria-label="Primary">
+      <div class="brand">AVINASH</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
-        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="animate-fade-in-up">
-                <img src="images/avatar.jpg" alt="Avinash" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-slate-700 shadow-xl object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Avinash+Shudhanshu&background=0D8ABC&color=fff&size=128'">
-                <h2 class="text-brand-400 font-semibold tracking-wide uppercase text-sm mb-2">Hello, World! I am</h2>
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">Avinash Kr Shudhanshu</h1>
-                <p class="text-xl md:text-2xl text-slate-400 mb-8 max-w-2xl mx-auto h-12" id="typewriter"></p>
-
-                <div class="flex justify-center space-x-6 mb-12">
-                    <a href="https://github.com/avinasx" target="_blank" class="text-slate-400 hover:text-white transform hover:scale-110 transition-all text-2xl"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" class="text-slate-400 hover:text-[#0a66c2] transform hover:scale-110 transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.researchgate.net/profile/Avinash_Shudhanshu" target="_blank" class="text-slate-400 hover:text-[#00ccbb] transform hover:scale-110 transition-all text-2xl"><i class="fab fa-researchgate"></i></a>
-                    <a href="https://stackoverflow.com/users/7338187/baremetal" target="_blank" class="text-slate-400 hover:text-[#f48024] transform hover:scale-110 transition-all text-2xl"><i class="fab fa-stack-overflow"></i></a>
-                    <a href="mailto:avinashsudhanshu@gmail.com" class="text-slate-400 hover:text-white transform hover:scale-110 transition-all text-2xl"><i class="fas fa-envelope"></i></a>
-                </div>
-
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contact" class="px-8 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-medium transition-colors shadow-lg shadow-brand-500/30">Get In Touch</a>
-                    <a href="./CV_Avinash.pdf" target="_blank" class="px-8 py-3 glass-panel hover:bg-slate-800 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
-                </div>
-            </div>
-
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-                <a href="#about" class="text-slate-500 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-down text-2xl"></i>
-                </a>
-            </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-card">
+        <img class="avatar" src="./images/avatar.jpg" alt="Avinash Kr Shudhanshu" />
+        <div>
+          <h1>Avinash Kr Shudhanshu</h1>
+          <p class="title">Full Stack Engineer</p>
+          <p>
+            I design and build secure, scalable products across backend, frontend, cloud, and data-driven systems.
+          </p>
+          <div class="chips" aria-label="social links">
+            <a class="chip" href="https://github.com/avinasx" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="chip" href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="chip" href="https://www.researchgate.net/profile/Avinash_Shudhanshu" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+            <a class="chip" href="https://stackexchange.com/users/8009309/codechari?tab=accounts" target="_blank" rel="noopener noreferrer">StackExchange</a>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Get in touch</a>
+            <a class="btn resume-link" href="#" target="_blank" rel="noopener noreferrer">View Resume</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 section-hidden">
-            <h2 class="text-3xl font-bold mb-8 text-center"><span class="gradient-text">About Me</span></h2>
-            <div class="glass-panel rounded-2xl p-8 md:p-10 shadow-xl">
-                <p class="text-lg text-slate-300 leading-relaxed mb-6">
-                    I love designing, developing, and deploying scalable, robust, and secure web backend and frontend applications. As a Full Stack Engineer, I have extensive experience writing microservices in various languages including <strong class="text-white">JavaScript, TypeScript, PHP, Python, and Java</strong>.
-                </p>
-                <p class="text-lg text-slate-300 leading-relaxed mb-6">
-                    Trying out new tools and technology amid development is my thing. My goals are not restricted by languages, frameworks, or tools. Data security is my priority, and I spend a significant amount of time optimizing server infrastructure. Trying to make applications learn from data amazes me.
-                </p>
-                <p class="text-lg text-slate-300 leading-relaxed">
-                    Apart from software engineering, I enjoy exploring new Operating Systems and distros in my leisure time, as well as playing with motors, actuators, and sensors to build robotic prototypes.
-                </p>
-            </div>
-        </div>
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-subtitle">
+          Full Stack Engineer with production experience in JavaScript, TypeScript, PHP, Python, and Java.
+          I focus on resilient architecture, clean delivery, security-minded engineering, and practical cloud operations.
+          I also enjoy robotics prototyping with motors, actuators, and sensors.
+        </p>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 section-hidden">
-            <h2 class="text-3xl font-bold mb-12 text-center"><span class="gradient-text">Technical Arsenal</span></h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Languages -->
-                <div class="glass-panel rounded-xl p-6">
-                    <div class="text-brand-400 text-3xl mb-4"><i class="fas fa-code"></i></div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Languages</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">JavaScript</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">TypeScript</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">Python</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">PHP</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">Java</span>
-                    </div>
-                </div>
-
-                <!-- Tools & Cloud -->
-                <div class="glass-panel rounded-xl p-6">
-                    <div class="text-brand-400 text-3xl mb-4"><i class="fas fa-cloud"></i></div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Tools & Cloud</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">AWS</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">Azure</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">Git</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">CI/CD</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">REST</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">gRPC</span>
-                    </div>
-                </div>
-
-                <!-- Databases -->
-                <div class="glass-panel rounded-xl p-6">
-                    <div class="text-brand-400 text-3xl mb-4"><i class="fas fa-database"></i></div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Databases</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">SQL (MySQL)</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">NoSQL (MongoDB)</span>
-                        <span class="skill-tag px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm">Key-Value Stores</span>
-                    </div>
-                </div>
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Languages</h3>
+            <div class="chips">
+              <span class="chip">JavaScript</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">Python</span>
+              <span class="chip">PHP</span>
+              <span class="chip">Java</span>
             </div>
+          </article>
+          <article class="card">
+            <h3>Backend & APIs</h3>
+            <div class="chips">
+              <span class="chip">Microservices</span>
+              <span class="chip">REST</span>
+              <span class="chip">gRPC</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Git</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Cloud & Data</h3>
+            <div class="chips">
+              <span class="chip">AWS</span>
+              <span class="chip">Azure</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Key-Value Stores</span>
+            </div>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-slate-900/50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 section-hidden">
-            <h2 class="text-3xl font-bold mb-16 text-center"><span class="gradient-text">Professional Journey</span></h2>
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+          <article class="timeline-item card">
+            <h3 class="role">SDE Backend — <a href="https://docquity.com/" target="_blank" rel="noopener noreferrer">Docquity</a></h3>
+            <p class="meta">Gurugram, India · Aug 2022 – Present</p>
+            <ul>
+              <li>Built and scaled backend services for one of Asia’s largest learning networks for doctors.</li>
+              <li>Worked on Community, Gamification, and Live Poll systems.</li>
+            </ul>
+          </article>
 
-            <div class="relative timeline-container">
-                <!-- Job 1 -->
-                <div class="relative flex items-start mb-12 md:mb-16">
-                    <!-- Timeline dot -->
-                    <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-brand-500 rounded-full ring-4 ring-slate-900 z-10 mt-1.5"></div>
+          <article class="timeline-item card">
+            <h3 class="role">Software Engineer — <a href="https://zenarate.com/" target="_blank" rel="noopener noreferrer">Zenarate</a></h3>
+            <p class="meta">Gurugram, India · Jun 2021 – Jul 2022</p>
+            <ul>
+              <li>Designed and delivered AI-coach related features for simulation-based agent training.</li>
+              <li>Contributed to chatbot design, development, and deployment workflows.</li>
+            </ul>
+          </article>
 
-                    <div class="flex flex-col md:flex-row w-full pl-10 md:pl-0">
-                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-                            <h3 class="text-xl font-bold text-white">SDE Backend</h3>
-                            <h4 class="text-brand-400 font-medium"><a href="https://docquity.com/" target="_blank" class="hover:underline">Docquity</a> <span class="text-slate-500 text-sm ml-2">Gurugram, India</span></h4>
-                            <div class="text-slate-400 text-sm mt-1 flex items-center md:justify-end gap-2">
-                                <i class="far fa-calendar-alt"></i> August 2022 - Present
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 md:pl-12">
-                            <div class="glass-panel p-5 rounded-xl border border-slate-700/50">
-                                <p class="text-slate-300 text-sm mb-3 font-medium">Asia's Largest learning network for doctors.</p>
-                                <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong class="text-slate-200">Major Projects:</strong> Community, Gamification, Live Poll. Architecting and developing highly scalable backend services to support a large network of medical professionals.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="relative flex items-start mb-12 md:mb-16">
-                    <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-brand-500 rounded-full ring-4 ring-slate-900 z-10 mt-1.5"></div>
-
-                    <div class="flex flex-col md:flex-row-reverse w-full pl-10 md:pl-0">
-                        <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
-                            <h3 class="text-xl font-bold text-white">Software Engineer</h3>
-                            <h4 class="text-brand-400 font-medium"><a href="https://zenarate.com/" target="_blank" class="hover:underline">Zenarate</a> <span class="text-slate-500 text-sm ml-2">Gurugram, India</span></h4>
-                            <div class="text-slate-400 text-sm mt-1 flex items-center gap-2">
-                                <i class="far fa-calendar-alt"></i> June 2021 - July 2022
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 md:pr-12 md:text-right">
-                            <div class="glass-panel p-5 rounded-xl border border-slate-700/50 text-left md:text-right">
-                                <p class="text-slate-300 text-sm mb-3 font-medium">An AI Coach developing top-performing agents through Simulation Training.</p>
-                                <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong class="text-slate-200">Project:</strong> 'AI Coach for performance enhancement'.<br>
-                                    <strong class="text-slate-200">Roles:</strong> Design, development, and deployment of intelligent chatbots to simulate customer interactions.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Job 3 -->
-                <div class="relative flex items-start">
-                    <div class="absolute left-[11px] md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-brand-500 rounded-full ring-4 ring-slate-900 z-10 mt-1.5"></div>
-
-                    <div class="flex flex-col md:flex-row w-full pl-10 md:pl-0">
-                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-                            <h3 class="text-xl font-bold text-white">Programmer</h3>
-                            <h4 class="text-brand-400 font-medium"><a href="https://docs.samarth.ac.in/" target="_blank" class="hover:underline">Samarth eGov, MOE</a> <span class="text-slate-500 text-sm ml-2">New Delhi</span></h4>
-                            <div class="text-slate-400 text-sm mt-1 flex items-center md:justify-end gap-2">
-                                <i class="far fa-calendar-alt"></i> June 2019 - May 2021
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 md:pl-12">
-                            <div class="glass-panel p-5 rounded-xl border border-slate-700/50">
-                                <p class="text-slate-300 text-sm mb-3 font-medium">Smarter Automation Engine for Universities under "National Mission in Education through ICT".</p>
-                                <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong class="text-slate-200">Roles:</strong> Design, development, and deployment of comprehensive web applications for university management.<br>
-                                    <strong class="text-slate-200">Major Projects:</strong> E-Housing, Legal, Programme-Student Management, Admission Management, CDU, Student LifeCycle, Grievance.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <article class="timeline-item card">
+            <h3 class="role">Programmer — <a href="https://docs.samarth.ac.in/" target="_blank" rel="noopener noreferrer">Samarth eGov, Ministry of Education</a></h3>
+            <p class="meta">New Delhi, India · Jun 2019 – May 2021</p>
+            <ul>
+              <li>Built university automation modules under the National Mission in Education through ICT.</li>
+              <li>Delivered E-Housing, Legal, Programme-Student Management, Admissions, CDU, Student Lifecycle, and Grievance components.</li>
+            </ul>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Education, Certs, Pubs Grid Section -->
-    <section id="education" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-hidden">
-            <h2 class="text-3xl font-bold mb-12 text-center"><span class="gradient-text">Education & Achievements</span></h2>
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Education, Certifications & Awards</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Education</h3>
+            <ul>
+              <li><strong>M.Sc. Informatics</strong> — Institute of Informatics and Communication, University of Delhi</li>
+              <li>Network Admin (UDSC), maintenance of campus area network; member of student grievance committee</li>
+              <li><strong>B.Sc. Electronics (Phy Sc)</strong> — Acharya Narendra Dev College, University of Delhi</li>
+              <li>Established Robotics and Automation Lab; member of SPIE</li>
+            </ul>
+          </article>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                <!-- Education Column -->
-                <div class="space-y-8">
-                    <div class="glass-panel rounded-2xl p-6 h-full border-t-4 border-t-brand-500">
-                        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><i class="fas fa-graduation-cap text-brand-400"></i> Education</h3>
-
-                        <div class="mb-6 relative pl-6 border-l-2 border-slate-700">
-                            <div class="absolute w-3 h-3 bg-slate-400 rounded-full -left-[7px] top-1.5"></div>
-                            <h4 class="text-lg font-semibold text-white">M.Sc. Informatics</h4>
-                            <p class="text-brand-400 text-sm mb-2">Institute of Informatics and Communication, University of Delhi</p>
-                            <ul class="text-slate-400 text-sm list-disc list-inside space-y-1">
-                                <li>Network Admin (UDSC), Maintenance of Campus Area Network</li>
-                                <li>Member of student grievance committee</li>
-                            </ul>
-                        </div>
-
-                        <div class="relative pl-6 border-l-2 border-slate-700">
-                            <div class="absolute w-3 h-3 bg-slate-400 rounded-full -left-[7px] top-1.5"></div>
-                            <h4 class="text-lg font-semibold text-white">B.Sc. Electronics (Phy Sc)</h4>
-                            <p class="text-brand-400 text-sm mb-2">Acharya Narendra Dev College, University of Delhi</p>
-                            <ul class="text-slate-400 text-sm list-disc list-inside space-y-1">
-                                <li>Established Robotics and Automation Lab</li>
-                                <li>Member of SPIE (Society of Photo-Electric and Instrumentation Engineer)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certs & Awards Column -->
-                <div class="space-y-8">
-                    <div class="glass-panel rounded-2xl p-6 border-t-4 border-t-purple-500">
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-3"><i class="fas fa-certificate text-purple-400"></i> Certifications</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-300 border border-slate-700"><i class="fas fa-shield-alt mr-1 text-slate-400"></i> Network Security Expert 2, Fortinet</span>
-                            <span class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-300 border border-slate-700"><i class="fas fa-brain mr-1 text-slate-400"></i> Machine Learning, Stanford Online</span>
-                            <span class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-300 border border-slate-700"><i class="fas fa-lock mr-1 text-slate-400"></i> Comptia Security+, Cybrary</span>
-                            <span class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-300 border border-slate-700"><i class="fas fa-bug mr-1 text-slate-400"></i> Burp Suite, Udemy</span>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel rounded-2xl p-6 border-t-4 border-t-yellow-500">
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-3"><i class="fas fa-trophy text-yellow-400"></i> Awards & Scholarships</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-sm text-slate-400">
-                                <i class="fas fa-award text-yellow-500 mt-1"></i>
-                                <span>First prize in "Project Presentation Competition" at "7th National Level Science Symposium", Rajkot (Feb 2014)</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-slate-400">
-                                <i class="fas fa-medal text-yellow-500 mt-1"></i>
-                                <span>ELITE (Education in Lively Innovative Training Environment) Fellowship, Acharya Narendra Dev College</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-slate-400">
-                                <i class="fas fa-star text-yellow-500 mt-1"></i>
-                                <span>Google India Scholarship for "Front end Web Developer"</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-slate-400">
-                                <i class="fas fa-star text-yellow-500 mt-1"></i>
-                                <span>JBT- Merit-Cum-Means Scholarship-2018</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Publications spanning full width -->
-                <div class="lg:col-span-2 glass-panel rounded-2xl p-6 border-t-4 border-t-green-500">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3"><i class="fas fa-book text-green-400"></i> Publications</h3>
-                    <div class="space-y-4">
-                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                            <h4 class="font-medium text-white mb-1">Error Reduction in Basic Science Laboratory through Sensors and Open Source Technology</h4>
-                            <p class="text-sm text-slate-400">Int. J. of Recent Trends in Engineering & Technology, Vol. 11, Issue 2, June 2014, pp.313-319</p>
-                        </div>
-                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                            <h4 class="font-medium text-white mb-1">Development of Open Source Low Cost Wireless Data Acquisition Systems for Science Experiments</h4>
-                            <p class="text-sm text-slate-400">International Journal of Information & Computation Technology. Volume 4, Number 12 (2014), pp. 1123-1128</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+          <article class="card">
+            <h3>Certifications</h3>
+            <ul>
+              <li>Network Security Expert 2 — Fortinet</li>
+              <li>Machine Learning — Stanford Online</li>
+              <li>Comptia Security+ — Cybrary</li>
+              <li>Burp Suite — Udemy</li>
+            </ul>
+            <h3 style="margin-top: 1rem;">Awards & Scholarships</h3>
+            <ul>
+              <li>First prize, Project Presentation Competition, 7th National Level Science Symposium (Rajkot, Feb 2014)</li>
+              <li>ELITE Fellowship, Acharya Narendra Dev College</li>
+              <li>Google India Scholarship — Front End Web Developer</li>
+              <li>JBT Merit-Cum-Means Scholarship (2018)</li>
+            </ul>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-900/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 section-hidden">
-            <h2 class="text-3xl font-bold mb-4 text-center"><span class="gradient-text">Let's Connect</span></h2>
-            <p class="text-center text-slate-400 mb-12">Have a question or want to work together? Drop me a message.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Contact Info -->
-                <div class="md:col-span-1 space-y-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-brand-400 text-xl border border-slate-700">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-sm text-slate-400">Phone</h4>
-                            <p class="text-white font-medium">+91-9711163013</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-brand-400 text-xl border border-slate-700">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-sm text-slate-400">Email</h4>
-                            <p class="text-white font-medium"><a href="mailto:avinashsudhanshu@gmail.com" class="hover:text-brand-400 transition-colors">avinashsudhanshu@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-brand-400 text-xl border border-slate-700">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-sm text-slate-400">Location</h4>
-                            <p class="text-white font-medium">India</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="md:col-span-2">
-                    <form id="my-form" action="https://formspree.io/f/mbjqywpn" method="POST" class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label for="name" class="sr-only">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Your Name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors">
-                            </div>
-                            <div>
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" name="_replyto" id="email" placeholder="Your Email" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="message" class="sr-only">Message</label>
-                            <textarea name="message" id="message" rows="5" placeholder="Your Message" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors resize-none"></textarea>
-                        </div>
-                        <button type="submit" id="my-form-button" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-lg shadow-brand-500/30">
-                            Send Message <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                        <p id="my-form-status" class="text-center mt-4 text-sm hidden"></p>
-                    </form>
-                </div>
-            </div>
+    <section id="publications" class="section">
+      <div class="container">
+        <h2 class="section-title">Publications</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Error Reduction in Basic Science Laboratory through Sensors and Open Source Technology</h3>
+            <p class="meta">Int. J. of Recent Trends in Engineering & Technology, Vol. 11, Issue 2, June 2014, pp. 313–319</p>
+          </article>
+          <article class="card">
+            <h3>Development of Open Source Low Cost Wireless Data Acquisition Systems for Science Experiments</h3>
+            <p class="meta">International Journal of Information & Computation Technology, Vol. 4, No. 12 (2014), pp. 1123–1128</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-slate-500 text-sm mb-4 md:mb-0">
-                &copy; <span id="year"></span> Avinash Kr Shudhanshu. All rights reserved.
-            </p>
-            <div class="flex space-x-6">
-                <a href="https://github.com/avinasx" target="_blank" class="text-slate-500 hover:text-white transition-colors"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" class="text-slate-500 hover:text-[#0a66c2] transition-colors"><i class="fab fa-linkedin"></i></a>
-            </div>
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Direct</h3>
+            <ul>
+              <li><strong>Email:</strong> <a href="mailto:avinashsudhanshu@gmail.com">avinashsudhanshu@gmail.com</a></li>
+              <li><strong>Phone:</strong> +91-9711163013</li>
+              <li><strong>Location:</strong> India</li>
+              <li><strong>Website:</strong> <a href="https://avinasx.github.io" target="_blank" rel="noopener noreferrer">avinasx.github.io</a></li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Resume</h3>
+            <p>Use the button below to open the latest resume link.</p>
+            <a class="btn resume-link" href="#" target="_blank" rel="noopener noreferrer">Open Resume</a>
+          </article>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <!-- Scripts -->
-    <script>
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Avinash Kr Shudhanshu</div>
+  </footer>
 
-        // Typewriter Effect
-        const phrases = ["Building Robust Backend Systems.", "Crafting Intuitive UIs.", "Solving Complex Problems.", "Full Stack Engineering."];
-        let currentPhrase = 0;
-        let letterIndex = 0;
-        let isDeleting = false;
-        const typeSpeed = 100;
-        const deleteSpeed = 50;
-        const delayBetween = 2000;
-        const typewriterEl = document.getElementById('typewriter');
+  <script>
+    // **IMPORTANT: REPLACE THIS RESUME LINK ANYTIME YOU WANT TO UPDATE THE PORTFOLIO RESUME URL**
+    const RESUME_LINK = "https://drive.google.com/file/d/1-x66zw0cSyefAEsYsyDoRBcwBmArWxTU/view?usp=sharing";
 
-        function type() {
-            const current = phrases[currentPhrase];
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-            if (isDeleting) {
-                typewriterEl.textContent = current.substring(0, letterIndex - 1);
-                letterIndex--;
-            } else {
-                typewriterEl.textContent = current.substring(0, letterIndex + 1);
-                letterIndex++;
-            }
-
-            let typeTimeout = isDeleting ? deleteSpeed : typeSpeed;
-
-            if (!isDeleting && letterIndex === current.length) {
-                typeTimeout = delayBetween;
-                isDeleting = true;
-            } else if (isDeleting && letterIndex === 0) {
-                isDeleting = false;
-                currentPhrase = (currentPhrase + 1) % phrases.length;
-                typeTimeout = 500;
-            }
-
-            setTimeout(type, typeTimeout);
-        }
-
-        // Start typewriter
-        setTimeout(type, 1000);
-
-        // Scroll Animation Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section-hidden').forEach((section) => {
-            observer.observe(section);
-        });
-
-        // Form Handling
-        const form = document.getElementById("my-form");
-        const button = document.getElementById("my-form-button");
-        const status = document.getElementById("my-form-status");
-
-        form.addEventListener("submit", async function(e) {
-            e.preventDefault();
-            const originalBtnText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            button.disabled = true;
-
-            const data = new FormData(form);
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                status.classList.remove("hidden", "text-red-400");
-
-                if (response.ok) {
-                    status.classList.add("text-green-400");
-                    status.innerHTML = "<i class='fas fa-check-circle mr-1'></i> Thanks! Your message has been sent.";
-                    form.reset();
-                } else {
-                    status.classList.add("text-red-400");
-                    status.innerHTML = "<i class='fas fa-exclamation-circle mr-1'></i> Oops! There was a problem submitting your form.";
-                }
-            } catch (error) {
-                status.classList.remove("hidden");
-                status.classList.add("text-red-400");
-                status.innerHTML = "<i class='fas fa-exclamation-circle mr-1'></i> Oops! There was a network error.";
-            } finally {
-                button.innerHTML = originalBtnText;
-                button.disabled = false;
-                setTimeout(() => {
-                    status.classList.add("hidden");
-                }, 5000);
-            }
-        });
-    </script>
+    document.querySelectorAll(".resume-link").forEach((link) => {
+      link.href = RESUME_LINK;
+    });
+  </script>
 </body>
 </html>
