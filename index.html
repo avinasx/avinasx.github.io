@@ -369,7 +369,6 @@
       text-transform: none;
     }
     .mini.hero-about {
-      text-transform: none;
       letter-spacing: normal;
     }
 
@@ -1280,7 +1279,7 @@
       }, { margin: "0px 0px -80px 0px" });
 
       inView("section", (section) => {
-        const revealTargets = section.querySelectorAll(".section-title, .section-desc, .card, .stat, .skill-pill, .bar");
+        const revealTargets = section.querySelectorAll(".skill-pill, .bar, details, .table-wrap tr");
         if (!revealTargets.length) return;
         animate(
           revealTargets,
