@@ -397,6 +397,7 @@
     }
 
     .chip:hover { text-decoration: none; border-color: var(--primary); color: var(--primary); }
+    .chip:active { transform: scale(1.02); }
 
     .actions {
       display: flex;
@@ -424,6 +425,7 @@
     }
 
     .btn:hover { text-decoration: none; border-color: var(--primary); background: rgba(0, 217, 197, 0.08); }
+    .btn:active { transform: scale(1.02); }
 
     .btn.primary {
       border-color: var(--primary);
@@ -494,6 +496,7 @@
       padding: 1rem;
       box-shadow: var(--shadow);
     }
+    .card:active { transform: scale(1.02); }
 
     .card h3 {
       margin: 0 0 0.55rem;
@@ -1278,8 +1281,6 @@
         node.addEventListener("mouseleave", animateOut);
         node.addEventListener("focus", animateIn);
         node.addEventListener("blur", animateOut);
-        node.addEventListener("touchstart", animateIn, { passive: true });
-        node.addEventListener("touchend", animateOut, { passive: true });
       });
     }
   </script>
