@@ -1263,16 +1263,23 @@
           { opacity: [0, 1], y: [14, 0] },
           { duration: 0.55, easing: [0.22, 1, 0.36, 1] }
         );
-      }, { margin: "0px 0px -12% 0px" });
+      }, { margin: "0px 0px -80px 0px" });
 
       const interactiveTargets = document.querySelectorAll(".btn, .chip, .card");
       interactiveTargets.forEach((node) => {
-        node.addEventListener("mouseenter", () => {
+        const animateIn = () => {
           animate(node, { scale: 1.02 }, { duration: 0.2 });
-        });
-        node.addEventListener("mouseleave", () => {
+        };
+        const animateOut = () => {
           animate(node, { scale: 1 }, { duration: 0.2 });
-        });
+        };
+
+        node.addEventListener("mouseenter", animateIn);
+        node.addEventListener("mouseleave", animateOut);
+        node.addEventListener("focus", animateIn);
+        node.addEventListener("blur", animateOut);
+        node.addEventListener("touchstart", animateIn, { passive: true });
+        node.addEventListener("touchend", animateOut, { passive: true });
       });
     }
   </script>
