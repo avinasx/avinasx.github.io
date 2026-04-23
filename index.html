@@ -1299,7 +1299,13 @@
       inView(".track", (element) => {
         const fill = element.querySelector(".fill");
         if (!fill) return;
-        const targetWidth = fill.style.width || "100%";
+        const inlineWidth = fill.style.width;
+        const computedWidth = getComputedStyle(fill).width;
+        const parentWidth = getComputedStyle(element).width;
+        const computedPercent = (computedWidth && parentWidth && parseFloat(parentWidth) > 0)
+          ? `${(parseFloat(computedWidth) / parseFloat(parentWidth)) * 100}%`
+          : "100%";
+        const targetWidth = inlineWidth || computedPercent;
         fill.style.width = "0%";
         animate(fill, { width: ["0%", targetWidth] }, { duration: 0.9, easing: [0.22, 1, 0.36, 1] });
       }, { margin: "0px 0px -140px 0px" });
@@ -1330,12 +1336,14 @@
       const hamburgerButton = document.getElementById("hamburger");
       if (drawerPanel && hamburgerButton) {
         hamburgerButton.addEventListener("click", () => {
-          const isOpen = document.getElementById("mobileDrawer")?.classList.contains("open");
-          if (isOpen) {
-            animate(drawerPanel, { x: ["100%", 0], opacity: [0.5, 1] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
-          } else {
-            animate(drawerPanel, { x: [0, "100%"], opacity: [1, 0.2] }, { duration: 0.2, easing: [0.4, 0, 1, 1] });
-          }
+          requestAnimationFrame(() => {
+            const isOpen = document.getElementById("mobileDrawer")?.classList.contains("open");
+            if (isOpen) {
+              animate(drawerPanel, { x: ["100%", 0], opacity: [0.5, 1] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
+            } else {
+              animate(drawerPanel, { x: [0, "100%"], opacity: [1, 0.2] }, { duration: 0.2, easing: [0.4, 0, 1, 1] });
+            }
+          });
         });
       }
     }
