@@ -1305,7 +1305,8 @@
         const computedPercent = (computedWidth && parentWidth && parseFloat(parentWidth) > 0)
           ? `${(parseFloat(computedWidth) / parseFloat(parentWidth)) * 100}%`
           : "100%";
-        const targetWidth = inlineWidth || computedPercent;
+        const hasInlineWidth = typeof inlineWidth === "string" && inlineWidth.trim() !== "" && parseFloat(inlineWidth) > 0;
+        const targetWidth = hasInlineWidth ? inlineWidth : computedPercent;
         fill.style.width = "0%";
         animate(fill, { width: ["0%", targetWidth] }, { duration: 0.9, easing: [0.22, 1, 0.36, 1] });
       }, { margin: "0px 0px -140px 0px" });
@@ -1334,10 +1335,11 @@
 
       const drawerPanel = document.querySelector(".drawer-panel");
       const hamburgerButton = document.getElementById("hamburger");
-      if (drawerPanel && hamburgerButton) {
+      const mobileDrawer = document.getElementById("mobileDrawer");
+      if (drawerPanel && hamburgerButton && mobileDrawer) {
         hamburgerButton.addEventListener("click", () => {
           requestAnimationFrame(() => {
-            const isOpen = document.getElementById("mobileDrawer")?.classList.contains("open");
+            const isOpen = mobileDrawer.classList.contains("open");
             if (isOpen) {
               animate(drawerPanel, { x: ["100%", 0], opacity: [0.5, 1] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
             } else {
