@@ -95,7 +95,7 @@
   <link rel="icon" type="image/svg+xml" href="./images/favicon-ak.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0b0d14;
@@ -120,7 +120,7 @@
     body {
       margin: 0;
       overflow-x: hidden;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -367,6 +367,10 @@
     .hero-about {
       margin-bottom: 2rem;
       text-transform: none;
+    }
+    .mini.hero-about {
+      text-transform: none;
+      letter-spacing: normal;
     }
 
     .socials {
@@ -1246,7 +1250,7 @@
     updateHamburgerLabel(false);
   </script>
   <script type="module">
-    import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+    import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1256,26 +1260,61 @@
       ) || 1.02;
 
       animate(
+        ".topbar",
+        { opacity: [0, 1], y: [-12, 0] },
+        { duration: 0.45, easing: [0.22, 1, 0.36, 1] }
+      );
+
+      animate(
         ".hero-card",
-        { opacity: [0, 1], y: [16, 0], filter: ["blur(4px)", "blur(0px)"] },
-        { duration: 0.65, easing: [0.22, 1, 0.36, 1] }
+        { opacity: [0, 1], y: [20, 0], scale: [0.985, 1], filter: ["blur(5px)", "blur(0px)"] },
+        { duration: 0.75, easing: [0.22, 1, 0.36, 1] }
       );
 
       inView(".section-title, .section-desc, .card, .stat", (element) => {
         animate(
           element,
-          { opacity: [0, 1], y: [14, 0] },
-          { duration: 0.55, easing: [0.22, 1, 0.36, 1] }
+          { opacity: [0, 1], y: [22, 0], scale: [0.985, 1] },
+          { duration: 0.6, easing: [0.22, 1, 0.36, 1] }
         );
       }, { margin: "0px 0px -80px 0px" });
 
-      const interactiveTargets = document.querySelectorAll(".btn, .chip, .card");
+      inView("section", (section) => {
+        const revealTargets = section.querySelectorAll(".section-title, .section-desc, .card, .stat, .skill-pill, .bar");
+        if (!revealTargets.length) return;
+        animate(
+          revealTargets,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.55, delay: stagger(0.045), easing: [0.22, 1, 0.36, 1] }
+        );
+      }, { margin: "0px 0px -120px 0px" });
+
+      inView(".timeline .item", (element) => {
+        animate(
+          element,
+          { opacity: [0, 1], x: [24, 0] },
+          { duration: 0.55, easing: [0.22, 1, 0.36, 1] }
+        );
+      }, { margin: "0px 0px -100px 0px" });
+
+      inView(".track", (element) => {
+        const fill = element.querySelector(".fill");
+        if (!fill) return;
+        const targetWidth = fill.style.width || "100%";
+        fill.style.width = "0%";
+        animate(fill, { width: ["0%", targetWidth] }, { duration: 0.9, easing: [0.22, 1, 0.36, 1] });
+      }, { margin: "0px 0px -140px 0px" });
+
+      const interactiveTargets = document.querySelectorAll(".btn, .chip, .card, .menu a, .drawer-panel a, summary");
       interactiveTargets.forEach((node) => {
         const animateIn = () => {
           animate(node, { scale: interactiveScale }, { duration: 0.2 });
         };
         const animateOut = () => {
           animate(node, { scale: 1 }, { duration: 0.2 });
+        };
+        const animateClick = () => {
+          animate(node, { scale: [1, 0.96, 1] }, { duration: 0.24, easing: [0.2, 0.8, 0.2, 1] });
         };
 
         node.addEventListener("mouseenter", animateIn);
@@ -1285,7 +1324,21 @@
         node.addEventListener("pointerdown", animateIn);
         node.addEventListener("pointerup", animateOut);
         node.addEventListener("pointercancel", animateOut);
+        node.addEventListener("click", animateClick);
       });
+
+      const drawerPanel = document.querySelector(".drawer-panel");
+      const hamburgerButton = document.getElementById("hamburger");
+      if (drawerPanel && hamburgerButton) {
+        hamburgerButton.addEventListener("click", () => {
+          const isOpen = document.getElementById("mobileDrawer")?.classList.contains("open");
+          if (isOpen) {
+            animate(drawerPanel, { x: ["100%", 0], opacity: [0.5, 1] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
+          } else {
+            animate(drawerPanel, { x: [0, "100%"], opacity: [1, 0.2] }, { duration: 0.2, easing: [0.4, 0, 1, 1] });
+          }
+        });
+      }
     }
   </script>
 </body>
