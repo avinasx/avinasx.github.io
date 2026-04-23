@@ -1390,9 +1390,9 @@
         const CHARACTER_DELAY_MS = 35;
         let charIndex = 0;
         const timerId = window.setInterval(() => {
-          heroAbout.textContent = fullText.slice(0, charIndex);
           charIndex += 1;
-          if (charIndex > fullText.length) {
+          heroAbout.textContent = fullText.slice(0, charIndex);
+          if (charIndex >= fullText.length) {
             window.clearInterval(timerId);
           }
         }, CHARACTER_DELAY_MS);
