@@ -109,6 +109,7 @@
       --ok: #00d9c5;
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
       --tracking-wide: 0.03em;
+      --interactive-scale: 1.02;
       --max: 1160px;
       --shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
     }
@@ -397,7 +398,6 @@
     }
 
     .chip:hover { text-decoration: none; border-color: var(--primary); color: var(--primary); }
-    .chip:active { transform: scale(1.02); }
 
     .actions {
       display: flex;
@@ -425,7 +425,6 @@
     }
 
     .btn:hover { text-decoration: none; border-color: var(--primary); background: rgba(0, 217, 197, 0.08); }
-    .btn:active { transform: scale(1.02); }
 
     .btn.primary {
       border-color: var(--primary);
@@ -496,7 +495,9 @@
       padding: 1rem;
       box-shadow: var(--shadow);
     }
-    .card:active { transform: scale(1.02); }
+    .chip:active,
+    .btn:active,
+    .card:active { transform: scale(var(--interactive-scale)); }
 
     .card h3 {
       margin: 0 0 0.55rem;
@@ -1254,6 +1255,10 @@
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (!prefersReducedMotion) {
+      const interactiveScale = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--interactive-scale")
+      ) || 1.02;
+
       animate(
         ".hero-card",
         { opacity: [0, 1], y: [16, 0], filter: ["blur(4px)", "blur(0px)"] },
@@ -1271,7 +1276,7 @@
       const interactiveTargets = document.querySelectorAll(".btn, .chip, .card");
       interactiveTargets.forEach((node) => {
         const animateIn = () => {
-          animate(node, { scale: 1.02 }, { duration: 0.2 });
+          animate(node, { scale: interactiveScale }, { duration: 0.2 });
         };
         const animateOut = () => {
           animate(node, { scale: 1 }, { duration: 0.2 });
