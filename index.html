@@ -1392,13 +1392,13 @@
       const fullText = heroAbout.textContent.trim();
       if (fullText) {
         heroAbout.textContent = "";
-        const characterDelayMs = 22;
-        let idx = 0;
+        const CHARACTER_DELAY_MS = 22;
+        let charIndex = 0;
         const typeNext = () => {
-          heroAbout.textContent = fullText.slice(0, idx);
-          idx += 1;
-          if (idx <= fullText.length) {
-            window.setTimeout(typeNext, characterDelayMs);
+          heroAbout.textContent = fullText.slice(0, charIndex);
+          charIndex += 1;
+          if (charIndex <= fullText.length) {
+            window.setTimeout(typeNext, CHARACTER_DELAY_MS);
           }
         };
         typeNext();
