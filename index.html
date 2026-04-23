@@ -1333,7 +1333,14 @@
           if (!entry.isIntersecting) return;
           const fill = entry.target.querySelector(".fill");
           if (!fill) return;
-          const targetWidth = fill.style.width && fill.style.width.trim() ? fill.style.width : "100%";
+          const inlineWidth = fill.style.width;
+          const computedWidth = getComputedStyle(fill).width;
+          const parentWidth = getComputedStyle(entry.target).width;
+          const computedPercent = (computedWidth && parentWidth && parseFloat(parentWidth) > 0)
+            ? `${(parseFloat(computedWidth) / parseFloat(parentWidth)) * 100}%`
+            : "100%";
+          const hasInlineWidth = typeof inlineWidth === "string" && inlineWidth.trim() !== "" && parseFloat(inlineWidth) > 0;
+          const targetWidth = hasInlineWidth ? inlineWidth : computedPercent;
           fill.style.width = "0%";
           runAnimation(
             fill,
@@ -1385,13 +1392,13 @@
       const fullText = heroAbout.textContent.trim();
       if (fullText) {
         heroAbout.textContent = "";
-        const typingSpeedMs = 16;
+        const characterDelayMs = 22;
         let idx = 0;
         const typeNext = () => {
           heroAbout.textContent = fullText.slice(0, idx);
           idx += 1;
           if (idx <= fullText.length) {
-            window.setTimeout(typeNext, typingSpeedMs);
+            window.setTimeout(typeNext, characterDelayMs);
           }
         };
         typeNext();
