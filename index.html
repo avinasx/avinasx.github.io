@@ -1390,12 +1390,17 @@
         const CHARACTER_DELAY_MS = 35;
         let charIndex = 0;
         const timerId = window.setInterval(() => {
+          if (!heroAbout.isConnected) {
+            window.clearInterval(timerId);
+            return;
+          }
           charIndex += 1;
           heroAbout.textContent = fullText.slice(0, charIndex);
           if (charIndex >= fullText.length) {
             window.clearInterval(timerId);
           }
         }, CHARACTER_DELAY_MS);
+        window.addEventListener("beforeunload", () => window.clearInterval(timerId), { once: true });
       }
     }
     })();
