@@ -121,10 +121,14 @@
       margin: 0;
       overflow-x: hidden;
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: 280;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
+
+    h1, h2, h3, h4, h5, h6 { font-weight: 500; }
+    strong, b { font-weight: 500; }
 
     a {
       color: var(--primary);
@@ -178,7 +182,7 @@
 
     .brand {
       font-family: var(--mono);
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: 0.06em;
       color: var(--primary);
       flex-shrink: 0;
@@ -346,7 +350,7 @@
     .headline {
       margin: 0.6rem 0 1rem;
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 350;
       font-size: clamp(0.88rem, 2.2vw, 1.15rem);
       word-break: break-word;
     }
@@ -370,6 +374,9 @@
     }
     .mini.hero-about {
       letter-spacing: normal;
+      text-transform: none !important;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      white-space: normal;
     }
 
     .socials {
@@ -542,7 +549,7 @@
       font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 500;
       white-space: nowrap;
     }
 
@@ -611,7 +618,7 @@
       font-size: 0.82rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 500;
       color: var(--primary);
       min-height: 44px;
       display: flex;
@@ -1248,107 +1255,149 @@
 
     updateHamburgerLabel(false);
   </script>
-  <script type="module">
-    import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
-
+  <script>
+    (function () {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (!prefersReducedMotion) {
-      const interactiveScale = parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue("--interactive-scale")
-      ) || 1.02;
+    if (prefersReducedMotion) return;
 
-      animate(
-        ".topbar",
-        { opacity: [0, 1], y: [-12, 0] },
-        { duration: 0.45, easing: [0.22, 1, 0.36, 1] }
-      );
+    const interactiveScale = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue("--interactive-scale")
+    ) || 1.02;
 
-      animate(
-        ".hero-card",
-        { opacity: [0, 1], y: [20, 0], scale: [0.985, 1], filter: ["blur(5px)", "blur(0px)"] },
-        { duration: 0.75, easing: [0.22, 1, 0.36, 1] }
-      );
+    function runAnimation(target, keyframes, options) {
+      if (!target || typeof target.animate !== "function") return;
+      target.animate(keyframes, options);
+    }
 
-      inView(".section-title, .section-desc, .card, .stat", (element) => {
-        animate(
-          element,
-          { opacity: [0, 1], y: [22, 0], scale: [0.985, 1] },
-          { duration: 0.6, easing: [0.22, 1, 0.36, 1] }
-        );
-      }, { margin: "0px 0px -80px 0px" });
-
-      inView("section", (section) => {
-        const revealTargets = section.querySelectorAll(".skill-pill, .bar, details, .table-wrap tr");
-        if (!revealTargets.length) return;
-        animate(
-          revealTargets,
-          { opacity: [0, 1], y: [20, 0] },
-          { duration: 0.55, delay: stagger(0.045), easing: [0.22, 1, 0.36, 1] }
-        );
-      }, { margin: "0px 0px -120px 0px" });
-
-      inView(".timeline .item", (element) => {
-        animate(
-          element,
-          { opacity: [0, 1], x: [24, 0] },
-          { duration: 0.55, easing: [0.22, 1, 0.36, 1] }
-        );
-      }, { margin: "0px 0px -100px 0px" });
-
-      inView(".track", (element) => {
-        const fill = element.querySelector(".fill");
-        if (!fill) return;
-        const inlineWidth = fill.style.width;
-        const computedWidth = getComputedStyle(fill).width;
-        const parentWidth = getComputedStyle(element).width;
-        const computedPercent = (computedWidth && parentWidth && parseFloat(parentWidth) > 0)
-          ? `${(parseFloat(computedWidth) / parseFloat(parentWidth)) * 100}%`
-          : "100%";
-        const hasInlineWidth = typeof inlineWidth === "string" && inlineWidth.trim() !== "" && parseFloat(inlineWidth) > 0;
-        const targetWidth = hasInlineWidth ? inlineWidth : computedPercent;
-        fill.style.width = "0%";
-        animate(fill, { width: ["0%", targetWidth] }, { duration: 0.9, easing: [0.22, 1, 0.36, 1] });
-      }, { margin: "0px 0px -140px 0px" });
-
-      const interactiveTargets = document.querySelectorAll(".btn, .chip, .card, .menu a, .drawer-panel a, summary");
-      interactiveTargets.forEach((node) => {
-        const animateIn = () => {
-          animate(node, { scale: interactiveScale }, { duration: 0.2 });
-        };
-        const animateOut = () => {
-          animate(node, { scale: 1 }, { duration: 0.2 });
-        };
-        const animateClick = () => {
-          animate(node, { scale: [1, 0.96, 1] }, { duration: 0.24, easing: [0.2, 0.8, 0.2, 1] });
-        };
-
-        node.addEventListener("mouseenter", animateIn);
-        node.addEventListener("mouseleave", animateOut);
-        node.addEventListener("focus", animateIn);
-        node.addEventListener("blur", animateOut);
-        node.addEventListener("pointerdown", animateIn);
-        node.addEventListener("pointerup", animateOut);
-        node.addEventListener("pointercancel", animateOut);
-        node.addEventListener("click", animateClick);
-      });
-
-      const drawerPanel = document.querySelector(".drawer-panel");
-      const hamburgerButton = document.getElementById("hamburger");
-      const mobileDrawer = document.getElementById("mobileDrawer");
-      if (drawerPanel && hamburgerButton && mobileDrawer) {
-        hamburgerButton.addEventListener("click", () => {
-          requestAnimationFrame(() => {
-            const isOpen = mobileDrawer.classList.contains("open");
-            if (isOpen) {
-              animate(drawerPanel, { x: ["100%", 0], opacity: [0.5, 1] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
-            } else {
-              animate(drawerPanel, { x: [0, "100%"], opacity: [1, 0.2] }, { duration: 0.2, easing: [0.4, 0, 1, 1] });
-            }
-          });
+    function setupScrollReveal(selector, keyframes, options, rootMargin = "0px 0px -80px 0px") {
+      const nodes = document.querySelectorAll(selector);
+      if (!nodes.length || !("IntersectionObserver" in window)) return;
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          runAnimation(entry.target, keyframes, options);
+          obs.unobserve(entry.target);
         });
+      }, { rootMargin, threshold: 0.1 });
+      nodes.forEach((node) => observer.observe(node));
+    }
+
+    runAnimation(
+      document.querySelector(".topbar"),
+      [{ opacity: 0, transform: "translateY(-12px)" }, { opacity: 1, transform: "translateY(0)" }],
+      { duration: 450, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" }
+    );
+
+    runAnimation(
+      document.querySelector(".hero-card"),
+      [
+        { opacity: 0, transform: "translateY(20px) scale(0.985)", filter: "blur(5px)" },
+        { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" }
+      ],
+      { duration: 750, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" }
+    );
+
+    setupScrollReveal(
+      ".section-title, .section-desc, .card, .stat",
+      [{ opacity: 0, transform: "translateY(22px) scale(0.985)" }, { opacity: 1, transform: "translateY(0) scale(1)" }],
+      { duration: 600, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" }
+    );
+
+    setupScrollReveal(
+      ".timeline .item",
+      [{ opacity: 0, transform: "translateX(24px)" }, { opacity: 1, transform: "translateX(0)" }],
+      { duration: 550, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" },
+      "0px 0px -100px 0px"
+    );
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const revealTargets = entry.target.querySelectorAll(".skill-pill, .bar, details, .table-wrap tr");
+          revealTargets.forEach((node, index) => {
+            runAnimation(
+              node,
+              [{ opacity: 0, transform: "translateY(20px)" }, { opacity: 1, transform: "translateY(0)" }],
+              { duration: 550, delay: index * 45, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" }
+            );
+          });
+          obs.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -120px 0px", threshold: 0.1 });
+      document.querySelectorAll("section").forEach((section) => sectionObserver.observe(section));
+
+      const tracksObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const fill = entry.target.querySelector(".fill");
+          if (!fill) return;
+          const targetWidth = fill.style.width && fill.style.width.trim() ? fill.style.width : "100%";
+          fill.style.width = "0%";
+          runAnimation(
+            fill,
+            [{ width: "0%" }, { width: targetWidth }],
+            { duration: 900, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "forwards" }
+          );
+          obs.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -140px 0px", threshold: 0.1 });
+      document.querySelectorAll(".track").forEach((track) => tracksObserver.observe(track));
+    }
+
+    const interactiveTargets = document.querySelectorAll(".btn, .chip, .card, .menu a, .drawer-panel a, summary");
+    interactiveTargets.forEach((node) => {
+      const animateIn = () => runAnimation(node, [{ transform: "scale(1)" }, { transform: `scale(${interactiveScale})` }], { duration: 200, fill: "forwards" });
+      const animateOut = () => runAnimation(node, [{ transform: `scale(${interactiveScale})` }, { transform: "scale(1)" }], { duration: 200, fill: "forwards" });
+      const animateClick = () => runAnimation(node, [{ transform: "scale(1)" }, { transform: "scale(0.96)" }, { transform: "scale(1)" }], { duration: 240, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" });
+
+      node.addEventListener("mouseenter", animateIn);
+      node.addEventListener("mouseleave", animateOut);
+      node.addEventListener("focus", animateIn);
+      node.addEventListener("blur", animateOut);
+      node.addEventListener("pointerdown", animateIn);
+      node.addEventListener("pointerup", animateOut);
+      node.addEventListener("pointercancel", animateOut);
+      node.addEventListener("click", animateClick);
+    });
+
+    const drawerPanel = document.querySelector(".drawer-panel");
+    const hamburgerButton = document.getElementById("hamburger");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    if (drawerPanel && hamburgerButton && mobileDrawer) {
+      hamburgerButton.addEventListener("click", () => {
+        requestAnimationFrame(() => {
+          const isOpen = mobileDrawer.classList.contains("open");
+          runAnimation(
+            drawerPanel,
+            isOpen
+              ? [{ transform: "translateX(100%)", opacity: 0.5 }, { transform: "translateX(0)", opacity: 1 }]
+              : [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(100%)", opacity: 0.2 }],
+            { duration: isOpen ? 280 : 200, easing: isOpen ? "cubic-bezier(0.22, 1, 0.36, 1)" : "cubic-bezier(0.4, 0, 1, 1)", fill: "both" }
+          );
+        });
+      });
+    }
+
+    const heroAbout = document.querySelector(".mini.hero-about");
+    if (heroAbout) {
+      const fullText = heroAbout.textContent.trim();
+      if (fullText) {
+        heroAbout.textContent = "";
+        const typingSpeedMs = 16;
+        let idx = 0;
+        const typeNext = () => {
+          heroAbout.textContent = fullText.slice(0, idx);
+          idx += 1;
+          if (idx <= fullText.length) {
+            window.setTimeout(typeNext, typingSpeedMs);
+          }
+        };
+        typeNext();
       }
     }
+    })();
   </script>
 </body>
 </html>
