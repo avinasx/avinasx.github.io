@@ -495,10 +495,6 @@
       padding: 1rem;
       box-shadow: var(--shadow);
     }
-    .chip:active,
-    .btn:active,
-    .card:active { transform: scale(var(--interactive-scale)); }
-
     .card h3 {
       margin: 0 0 0.55rem;
       font-size: 1.08rem;
@@ -1286,6 +1282,9 @@
         node.addEventListener("mouseleave", animateOut);
         node.addEventListener("focus", animateIn);
         node.addEventListener("blur", animateOut);
+        node.addEventListener("pointerdown", animateIn);
+        node.addEventListener("pointerup", animateOut);
+        node.addEventListener("pointercancel", animateOut);
       });
     }
   </script>
