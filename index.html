@@ -51,7 +51,6 @@
           "caption": "Avinash Kumar Shudhanshu"
         },
         "email": "avinashsudhanshu@gmail.com",
-        "telephone": "+91-9711163013",
         "jobTitle": "Lead Software Engineer/Architect",
         "description": "Lead Software Engineer/Architect with 7+ years of experience in full-stack, polyglot backend, ML, Gen-AI, RAG, and cloud-native systems across investment banking, pharma R&D, healthcare, and edtech.",
         "knowsAbout": [
@@ -93,11 +92,11 @@
   }
   </script>
 
-  <link rel="icon" type="image/jpeg" href="./images/favicon.jpg" />
-  <link rel="shortcut icon" type="image/jpeg" href="./images/favicon.jpg" />
+  <link rel="icon" type="image/svg+xml" href="./images/favicon-ak.svg" />
+  <link rel="shortcut icon" href="./images/favicon-ak.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0b0d14;
@@ -109,7 +108,7 @@
       --primary: #00d9c5;
       --accent: #00d9c5;
       --ok: #00d9c5;
-      --mono: 'Space Mono', 'JetBrains Mono', ui-monospace, monospace;
+      --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
       --max: 1160px;
       --shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
     }
@@ -339,6 +338,8 @@
       line-height: 1.2;
       font-size: clamp(1.65rem, 5.2vw, 3.1rem);
       word-break: break-word;
+      font-family: var(--mono);
+      letter-spacing: 0.03em;
     }
 
     .headline {
@@ -465,6 +466,8 @@
       font-size: clamp(1.4rem, 2.3vw, 2rem);
       margin: 0 0 0.6rem;
       color: var(--primary);
+      font-family: var(--mono);
+      letter-spacing: 0.03em;
     }
 
     .section-desc {
@@ -810,7 +813,6 @@
         </p>
         <div class="hero-meta">
           <span><strong>Email:</strong> <a href="mailto:avinashsudhanshu@gmail.com">avinashsudhanshu@gmail.com</a></span>
-          <span><strong>Phone:</strong> <a href="tel:+919711163013">+91-9711163013</a></span>
           <span><strong>Location:</strong> India</span>
         </div>
 
@@ -1141,7 +1143,6 @@
             <h3>Direct</h3>
             <ul>
               <li><strong>Email:</strong> <a href="mailto:avinashsudhanshu@gmail.com">avinashsudhanshu@gmail.com</a></li>
-              <li><strong>Phone:</strong> <a href="tel:+919711163013">+91-9711163013</a></li>
               <li><strong>Website:</strong> <a href="https://avinasx.github.io" target="_blank" rel="noopener noreferrer">avinasx.github.io</a></li>
               <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" rel="noopener noreferrer">linkedin.com/in/avinash-kumar-shudhanshu-3aa13327</a></li>
               <li><strong>GitHub:</strong> <a href="https://github.com/avinasx" target="_blank" rel="noopener noreferrer">github.com/avinasx</a></li>
@@ -1243,6 +1244,37 @@
     });
 
     updateHamburgerLabel(false);
+  </script>
+  <script type="module">
+    import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion) {
+      animate(
+        ".hero-card",
+        { opacity: [0, 1], y: [16, 0], filter: ["blur(4px)", "blur(0px)"] },
+        { duration: 0.65, easing: [0.22, 1, 0.36, 1] }
+      );
+
+      inView(".section-title, .section-desc, .card, .stat", (element) => {
+        animate(
+          element,
+          { opacity: [0, 1], y: [14, 0] },
+          { duration: 0.55, easing: [0.22, 1, 0.36, 1] }
+        );
+      }, { margin: "0px 0px -12% 0px" });
+
+      const interactiveTargets = document.querySelectorAll(".btn, .chip, .card");
+      interactiveTargets.forEach((node) => {
+        node.addEventListener("mouseenter", () => {
+          animate(node, { scale: 1.02 }, { duration: 0.2 });
+        });
+        node.addEventListener("mouseleave", () => {
+          animate(node, { scale: 1 }, { duration: 0.2 });
+        });
+      });
+    }
   </script>
 </body>
 </html>
