@@ -770,6 +770,21 @@
     /* ── Contact card: prevent long URLs overflowing ──────────── */
 
     .card a, .card li { overflow-wrap: break-word; word-break: break-word; }
+
+    .btn, .chip, .card, .menu a, .drawer-panel a, summary {
+      transition: transform 0.2s ease;
+      transform: scale(1);
+      transform-origin: center;
+    }
+
+    .btn:hover, .btn:focus-visible,
+    .chip:hover, .chip:focus-visible,
+    .card:hover, .card:focus-within,
+    .menu a:hover, .menu a:focus-visible,
+    .drawer-panel a:hover, .drawer-panel a:focus-visible,
+    summary:hover, summary:focus-visible {
+      transform: scale(var(--interactive-scale));
+    }
   </style>
 </head>
 <body>
@@ -1261,10 +1276,6 @@
 
     if (prefersReducedMotion) return;
 
-    const interactiveScale = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--interactive-scale")
-    ) || 1.02;
-
     function runAnimation(target, keyframes, options) {
       if (!target || typeof target.animate !== "function") return;
       target.animate(keyframes, options);
@@ -1353,28 +1364,6 @@
       document.querySelectorAll(".track").forEach((track) => tracksObserver.observe(track));
     }
 
-    const interactiveTargets = document.querySelectorAll(".btn, .chip, .card, .menu a, .drawer-panel a, summary");
-    interactiveTargets.forEach((node) => {
-      const animateIn = () => {
-        runAnimation(node, [{ transform: "scale(1)" }, { transform: `scale(${interactiveScale})` }], { duration: 200, fill: "none" });
-        node.style.transform = `scale(${interactiveScale})`;
-      };
-      const animateOut = () => {
-        runAnimation(node, [{ transform: `scale(${interactiveScale})` }, { transform: "scale(1)" }], { duration: 200, fill: "none" });
-        node.style.transform = "scale(1)";
-      };
-      const animateClick = () => runAnimation(node, [{ transform: "scale(1)" }, { transform: "scale(0.96)" }, { transform: "scale(1)" }], { duration: 240, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)", fill: "none" });
-
-      node.addEventListener("mouseenter", animateIn);
-      node.addEventListener("mouseleave", animateOut);
-      node.addEventListener("focus", animateIn);
-      node.addEventListener("blur", animateOut);
-      node.addEventListener("pointerdown", animateIn);
-      node.addEventListener("pointerup", animateOut);
-      node.addEventListener("pointercancel", animateOut);
-      node.addEventListener("click", animateClick);
-    });
-
     const drawerPanel = document.querySelector(".drawer-panel");
     const hamburgerButton = document.getElementById("hamburger");
     const mobileDrawer = document.getElementById("mobileDrawer");
@@ -1398,7 +1387,7 @@
       const fullText = heroAbout.textContent.trim();
       if (fullText) {
         heroAbout.textContent = "";
-        const CHARACTER_DELAY_MS = 22;
+        const CHARACTER_DELAY_MS = 35;
         let charIndex = 0;
         const timerId = window.setInterval(() => {
           heroAbout.textContent = fullText.slice(0, charIndex);
