@@ -1355,9 +1355,15 @@
 
     const interactiveTargets = document.querySelectorAll(".btn, .chip, .card, .menu a, .drawer-panel a, summary");
     interactiveTargets.forEach((node) => {
-      const animateIn = () => runAnimation(node, [{ transform: "scale(1)" }, { transform: `scale(${interactiveScale})` }], { duration: 200, fill: "forwards" });
-      const animateOut = () => runAnimation(node, [{ transform: `scale(${interactiveScale})` }, { transform: "scale(1)" }], { duration: 200, fill: "forwards" });
-      const animateClick = () => runAnimation(node, [{ transform: "scale(1)" }, { transform: "scale(0.96)" }, { transform: "scale(1)" }], { duration: 240, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" });
+      const animateIn = () => {
+        runAnimation(node, [{ transform: "scale(1)" }, { transform: `scale(${interactiveScale})` }], { duration: 200, fill: "none" });
+        node.style.transform = `scale(${interactiveScale})`;
+      };
+      const animateOut = () => {
+        runAnimation(node, [{ transform: `scale(${interactiveScale})` }, { transform: "scale(1)" }], { duration: 200, fill: "none" });
+        node.style.transform = "scale(1)";
+      };
+      const animateClick = () => runAnimation(node, [{ transform: "scale(1)" }, { transform: "scale(0.96)" }, { transform: "scale(1)" }], { duration: 240, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)", fill: "none" });
 
       node.addEventListener("mouseenter", animateIn);
       node.addEventListener("mouseleave", animateOut);
@@ -1394,14 +1400,13 @@
         heroAbout.textContent = "";
         const CHARACTER_DELAY_MS = 22;
         let charIndex = 0;
-        const typeNext = () => {
+        const timerId = window.setInterval(() => {
           heroAbout.textContent = fullText.slice(0, charIndex);
           charIndex += 1;
-          if (charIndex <= fullText.length) {
-            window.setTimeout(typeNext, CHARACTER_DELAY_MS);
+          if (charIndex > fullText.length) {
+            window.clearInterval(timerId);
           }
-        };
-        typeNext();
+        }, CHARACTER_DELAY_MS);
       }
     }
     })();
