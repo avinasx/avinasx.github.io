@@ -109,6 +109,13 @@
       --ok: #00d9c5;
       --hero-type-start: #76f0ff;
       --hero-type-end: #ff5ce1;
+      --neon-cyan: #76f0ff;
+      --neon-pink: #ff5ce1;
+      --surface-grad-soft: linear-gradient(145deg, rgba(118, 240, 255, 0.08), rgba(255, 92, 225, 0.06));
+      --surface-grad: linear-gradient(145deg, rgba(118, 240, 255, 0.12), rgba(255, 92, 225, 0.08));
+      --surface-grad-strong: linear-gradient(145deg, rgba(118, 240, 255, 0.15), rgba(255, 92, 225, 0.12));
+      --glow-soft: 0 0 18px color-mix(in srgb, var(--neon-cyan) 18%, transparent);
+      --glow-medium: 0 0 26px color-mix(in srgb, var(--neon-pink) 14%, transparent);
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
       --tracking-wide: 0.03em;
       --interactive-scale: 1.02;
@@ -124,7 +131,10 @@
       overflow-x: hidden;
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-weight: 280;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 10% -10%, rgba(118, 240, 255, 0.13), transparent 42%),
+        radial-gradient(circle at 92% 4%, rgba(255, 92, 225, 0.11), transparent 38%),
+        linear-gradient(180deg, #070910 0%, #0b0d14 52%, #0f1220 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -154,7 +164,8 @@
       z-index: 100;
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 217, 197, 0.12);
-      background: rgba(11, 13, 20, 0.92);
+      background: color-mix(in srgb, #0b0d14 78%, transparent);
+      box-shadow: var(--glow-soft);
     }
 
     .topbar nav {
@@ -171,7 +182,7 @@
       min-height: 36px;
       border-radius: 999px;
       border: 1px solid rgba(0, 217, 197, 0.4);
-      background: transparent;
+      background: var(--surface-grad-soft);
       color: var(--primary);
       padding: 0.3rem 0.9rem;
       font-family: var(--mono);
@@ -180,7 +191,7 @@
       white-space: nowrap;
     }
 
-    .nav-resume:hover { text-decoration: none; background: rgba(0, 217, 197, 0.08); }
+    .nav-resume:hover { text-decoration: none; background: var(--surface-grad); box-shadow: var(--glow-soft); }
 
     .brand {
       font-family: var(--mono);
@@ -213,6 +224,7 @@
       padding: 0.3rem 0.7rem;
       border: 1px solid rgba(0, 217, 197, 0.22);
       border-radius: 999px;
+      background: var(--surface-grad-soft);
       letter-spacing: 0.03em;
       transition: color 0.18s, border-color 0.18s;
     }
@@ -220,6 +232,7 @@
     .menu a:hover {
       color: var(--primary);
       border-color: var(--primary);
+      background: var(--surface-grad);
       text-decoration: none;
     }
 
@@ -229,7 +242,7 @@
       flex-direction: column;
       justify-content: center;
       gap: 5px;
-      background: none;
+      background: var(--surface-grad-soft);
       border: 1px solid rgba(0, 217, 197, 0.3);
       border-radius: 8px;
       padding: 8px 10px;
@@ -282,7 +295,8 @@
       right: 0;
       height: 100%;
       width: min(300px, 80vw);
-      background: #0b0d14;
+      background: color-mix(in srgb, #0b0d14 88%, transparent);
+      background-image: var(--surface-grad);
       border-left: 1px solid rgba(0, 217, 197, 0.15);
       padding: 5rem 1.5rem 2rem;
       display: flex;
@@ -334,11 +348,11 @@
     }
 
     .hero-card {
-      background: rgba(15, 18, 32, 0.7);
+      background: var(--surface-grad-strong);
       border: 1px solid rgba(0, 217, 197, 0.15);
       border-radius: 22px;
       padding: clamp(1rem, 2.5vw, 2rem);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow), var(--glow-soft);
       animation: rise 650ms ease both;
     }
 
@@ -430,10 +444,11 @@
       height: 44px;
       border-radius: 999px;
       border: 1px solid rgba(0, 217, 197, 0.35);
-      background: rgba(0, 217, 197, 0.05);
+      background: var(--surface-grad-soft);
       color: var(--text);
       touch-action: manipulation;
       flex-shrink: 0;
+      box-shadow: var(--glow-soft);
     }
 
     .chip svg {
@@ -459,7 +474,7 @@
       min-height: 44px;
       border-radius: 999px;
       border: 1px solid rgba(0, 217, 197, 0.4);
-      background: transparent;
+      background: var(--surface-grad-soft);
       color: var(--primary);
       padding: 0.65rem 1.2rem;
       font-family: var(--mono);
@@ -468,13 +483,14 @@
       letter-spacing: 0.04em;
       touch-action: manipulation;
       white-space: nowrap;
+      box-shadow: var(--glow-soft);
     }
 
-    .btn:hover { text-decoration: none; border-color: var(--primary); background: rgba(0, 217, 197, 0.08); }
+    .btn:hover { text-decoration: none; border-color: var(--primary); background: var(--surface-grad); box-shadow: var(--glow-medium); }
 
     .btn.primary {
       border-color: var(--primary);
-      background: rgba(0, 217, 197, 0.12);
+      background: var(--surface-grad-strong);
       color: var(--primary);
     }
 
@@ -488,11 +504,12 @@
     }
 
     .stat {
-      background: rgba(0, 0, 0, 0.35);
+      background: var(--surface-grad);
       border: 1px solid rgba(0, 217, 197, 0.2);
       border-radius: 12px;
       padding: 0.7rem;
       text-align: center;
+      box-shadow: var(--glow-soft);
     }
 
     .stat strong {
@@ -542,11 +559,11 @@
     /* ── Cards ────────────────────────────────────────────────── */
 
     .card {
-      background: var(--card);
+      background: var(--surface-grad);
       border: 1px solid rgba(0, 217, 197, 0.15);
       border-radius: 16px;
       padding: 1rem;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow), var(--glow-soft);
     }
     .card h3 {
       margin: 0 0 0.55rem;
@@ -588,7 +605,8 @@
       border-collapse: collapse;
       min-width: 540px;
       width: 100%;
-      background: #0b0d14;
+      background: color-mix(in srgb, #0b0d14 90%, transparent);
+      background-image: var(--surface-grad-soft);
     }
 
     th, td {
@@ -663,7 +681,7 @@
     details {
       border-radius: 12px;
       border: 1px solid rgba(0, 217, 197, 0.15);
-      background: rgba(0, 0, 0, 0.25);
+      background: var(--surface-grad-soft);
       padding: 0.62rem 0.75rem;
       margin-top: 0.6rem;
     }
@@ -710,7 +728,7 @@
       font-family: var(--mono);
       font-size: 0.78rem;
       color: var(--text);
-      background: rgba(0, 217, 197, 0.05);
+      background: var(--surface-grad-soft);
       word-break: break-word;
     }
 
@@ -759,6 +777,7 @@
       margin-top: 0.7rem;
       border-top: 1px solid var(--line);
       color: var(--muted);
+      background: linear-gradient(180deg, rgba(118, 240, 255, 0.03), rgba(255, 92, 225, 0.02));
       padding: 1.1rem 0 2rem;
       text-align: center;
       font-size: 0.94rem;
