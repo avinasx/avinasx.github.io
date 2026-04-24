@@ -849,7 +849,7 @@
             <p class="headline">Lead Software Engineer/Architect | Full-Stack | Polyglot | Backend | ML | Gen-AI | RAG | Stanford | DU</p>
           </div>
         </div>
-        <p class="mini hero-about">
+        <p class="mini hero-about" data-force-typewriter="true">
           I’m a Lead Software Engineer/Architect focused on backend and full-stack systems, with hands-on delivery in Gen-AI, RAG, cloud-native services, and scalable product engineering across investment banking, pharma R&amp;D, healthcare, and edtech.
         </p>
         <div class="hero-meta">
@@ -1294,6 +1294,11 @@
     if (heroAbout) {
       const fullText = heroAbout.textContent.trim();
       if (fullText) {
+        const forceTypewriter = heroAbout.dataset.forceTypewriter === "true";
+        if (prefersReducedMotion && !forceTypewriter) {
+          heroAbout.textContent = fullText;
+          return;
+        }
         heroAbout.textContent = "";
         const CHARACTER_DELAY_MS = 35;
         let charIndex = 0;
