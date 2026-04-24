@@ -114,8 +114,8 @@
       --surface-grad-soft: linear-gradient(145deg, rgba(118, 240, 255, 0.08), rgba(255, 92, 225, 0.06));
       --surface-grad: linear-gradient(145deg, rgba(118, 240, 255, 0.12), rgba(255, 92, 225, 0.08));
       --surface-grad-strong: linear-gradient(145deg, rgba(118, 240, 255, 0.15), rgba(255, 92, 225, 0.12));
-      --glow-soft: 0 0 18px color-mix(in srgb, var(--neon-cyan) 18%, transparent);
-      --glow-medium: 0 0 26px color-mix(in srgb, var(--neon-pink) 14%, transparent);
+      --glow-soft: 0 0 18px color-mix(in srgb, var(--primary) 18%, transparent);
+      --glow-medium: 0 0 26px color-mix(in srgb, var(--primary) 24%, transparent);
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
       --tracking-wide: 0.03em;
       --interactive-scale: 1.02;
@@ -164,7 +164,7 @@
       z-index: 100;
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 217, 197, 0.12);
-      background: color-mix(in srgb, #0b0d14 78%, transparent);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
       box-shadow: var(--glow-soft);
     }
 
@@ -295,8 +295,7 @@
       right: 0;
       height: 100%;
       width: min(300px, 80vw);
-      background: color-mix(in srgb, #0b0d14 88%, transparent);
-      background-image: var(--surface-grad);
+      background: var(--surface-grad), color-mix(in srgb, var(--bg) 88%, transparent);
       border-left: 1px solid rgba(0, 217, 197, 0.15);
       padding: 5rem 1.5rem 2rem;
       display: flex;
@@ -605,8 +604,7 @@
       border-collapse: collapse;
       min-width: 540px;
       width: 100%;
-      background: color-mix(in srgb, #0b0d14 90%, transparent);
-      background-image: var(--surface-grad-soft);
+      background: var(--surface-grad-soft), color-mix(in srgb, var(--bg) 90%, transparent);
     }
 
     th, td {
