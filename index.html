@@ -117,9 +117,16 @@
       --surface-grad-strong: linear-gradient(145deg, rgba(118, 240, 255, 0.15), rgba(255, 92, 225, 0.12));
       --surface-shell-strong: color-mix(in srgb, var(--bg) 88%, transparent);
       --surface-shell-soft: color-mix(in srgb, var(--bg) 90%, transparent);
+      --surface-drawer: var(--surface-grad), var(--surface-shell-strong);
+      --surface-table: var(--surface-grad-soft), var(--surface-shell-soft);
       --bg-accent-cyan: radial-gradient(circle at 10% -10%, rgba(118, 240, 255, 0.13), transparent 42%);
       --bg-accent-pink: radial-gradient(circle at 92% 4%, rgba(255, 92, 225, 0.11), transparent 38%);
       --bg-base-gradient: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 52%, var(--bg-elevated) 100%);
+      --surface-footer: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--hero-type-start) 10%, transparent),
+        color-mix(in srgb, var(--hero-type-end) 8%, transparent)
+      );
       --glow-soft: 0 0 18px color-mix(in srgb, var(--primary) 18%, transparent);
       --glow-medium: 0 0 26px color-mix(in srgb, var(--primary) 24%, transparent);
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
@@ -301,7 +308,7 @@
       right: 0;
       height: 100%;
       width: min(300px, 80vw);
-      background: var(--surface-grad), var(--surface-shell-strong);
+      background: var(--surface-drawer);
       border-left: 1px solid rgba(0, 217, 197, 0.15);
       padding: 5rem 1.5rem 2rem;
       display: flex;
@@ -610,7 +617,7 @@
       border-collapse: collapse;
       min-width: 540px;
       width: 100%;
-      background: var(--surface-grad-soft), var(--surface-shell-soft);
+      background: var(--surface-table);
     }
 
     th, td {
@@ -781,11 +788,7 @@
       margin-top: 0.7rem;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--hero-type-start) 10%, transparent),
-        color-mix(in srgb, var(--hero-type-end) 8%, transparent)
-      );
+      background: var(--surface-footer);
       padding: 1.1rem 0 2rem;
       text-align: center;
       font-size: 0.94rem;
