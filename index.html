@@ -186,7 +186,14 @@
       font-family: var(--mono);
       font-weight: 500;
       letter-spacing: 0.06em;
-      color: var(--primary);
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 10px color-mix(in srgb, var(--hero-type-start) 16%, transparent),
+        0 0 16px color-mix(in srgb, var(--hero-type-end) 14%, transparent);
       flex-shrink: 0;
     }
 
@@ -395,6 +402,17 @@
         color: CanvasText;
         text-shadow: none;
       }
+
+      .brand,
+      .section-title,
+      #skills .card h3,
+      #credentials .card h3,
+      #contact .card h3 {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: CanvasText;
+        text-shadow: none;
+      }
     }
 
     .socials {
@@ -494,7 +512,14 @@
     .section-title {
       font-size: clamp(1.4rem, 2.3vw, 2rem);
       margin: 0 0 0.6rem;
-      color: var(--primary);
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 10px color-mix(in srgb, var(--hero-type-start) 16%, transparent),
+        0 0 16px color-mix(in srgb, var(--hero-type-end) 14%, transparent);
       font-family: var(--mono);
       letter-spacing: var(--tracking-wide);
     }
@@ -526,6 +551,19 @@
     .card h3 {
       margin: 0 0 0.55rem;
       font-size: 1.08rem;
+    }
+
+    #skills .card h3,
+    #credentials .card h3,
+    #contact .card h3 {
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 8px color-mix(in srgb, var(--hero-type-start) 16%, transparent),
+        0 0 12px color-mix(in srgb, var(--hero-type-end) 14%, transparent);
     }
 
     .mini {
