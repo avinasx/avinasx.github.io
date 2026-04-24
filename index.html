@@ -1297,25 +1297,26 @@
       const fullText = heroAbout.textContent.trim();
       if (fullText) {
         const forceTypewriter = heroAbout.dataset.forceTypewriter === "true";
-        if (prefersReducedMotion && !forceTypewriter) {
+        const shouldRunTypewriter = !(prefersReducedMotion && !forceTypewriter);
+        if (!shouldRunTypewriter) {
           heroAbout.textContent = fullText;
-          return;
+        } else {
+          heroAbout.textContent = "";
+          const CHARACTER_DELAY_MS = 35;
+          let charIndex = 0;
+          const timerId = window.setInterval(() => {
+            if (!heroAbout.isConnected) {
+              window.clearInterval(timerId);
+              return;
+            }
+            heroAbout.textContent = fullText.slice(0, charIndex + 1);
+            charIndex += 1;
+            if (charIndex >= fullText.length) {
+              window.clearInterval(timerId);
+            }
+          }, CHARACTER_DELAY_MS);
+          window.addEventListener("beforeunload", () => window.clearInterval(timerId), { once: true });
         }
-        heroAbout.textContent = "";
-        const CHARACTER_DELAY_MS = 35;
-        let charIndex = 0;
-        const timerId = window.setInterval(() => {
-          if (!heroAbout.isConnected) {
-            window.clearInterval(timerId);
-            return;
-          }
-          charIndex += 1;
-          heroAbout.textContent = fullText.slice(0, charIndex);
-          if (charIndex >= fullText.length) {
-            window.clearInterval(timerId);
-          }
-        }, CHARACTER_DELAY_MS);
-        window.addEventListener("beforeunload", () => window.clearInterval(timerId), { once: true });
       }
     }
 
