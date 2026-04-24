@@ -109,11 +109,13 @@
       --ok: #00d9c5;
       --hero-type-start: #76f0ff;
       --hero-type-end: #ff5ce1;
-      --neon-cyan: #76f0ff;
-      --neon-pink: #ff5ce1;
       --surface-grad-soft: linear-gradient(145deg, rgba(118, 240, 255, 0.08), rgba(255, 92, 225, 0.06));
       --surface-grad: linear-gradient(145deg, rgba(118, 240, 255, 0.12), rgba(255, 92, 225, 0.08));
       --surface-grad-strong: linear-gradient(145deg, rgba(118, 240, 255, 0.15), rgba(255, 92, 225, 0.12));
+      --surface-shell-strong: color-mix(in srgb, var(--bg) 88%, transparent);
+      --surface-shell-soft: color-mix(in srgb, var(--bg) 90%, transparent);
+      --surface-grad-shell-strong: var(--surface-grad), var(--surface-shell-strong);
+      --surface-grad-shell-soft: var(--surface-grad-soft), var(--surface-shell-soft);
       --glow-soft: 0 0 18px color-mix(in srgb, var(--primary) 18%, transparent);
       --glow-medium: 0 0 26px color-mix(in srgb, var(--primary) 24%, transparent);
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
@@ -295,7 +297,7 @@
       right: 0;
       height: 100%;
       width: min(300px, 80vw);
-      background: var(--surface-grad), color-mix(in srgb, var(--bg) 88%, transparent);
+      background: var(--surface-grad-shell-strong);
       border-left: 1px solid rgba(0, 217, 197, 0.15);
       padding: 5rem 1.5rem 2rem;
       display: flex;
@@ -604,7 +606,7 @@
       border-collapse: collapse;
       min-width: 540px;
       width: 100%;
-      background: var(--surface-grad-soft), color-mix(in srgb, var(--bg) 90%, transparent);
+      background: var(--surface-grad-shell-soft);
     }
 
     th, td {
