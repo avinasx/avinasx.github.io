@@ -384,7 +384,9 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 14px rgba(118, 240, 255, 0.25), 0 0 20px rgba(255, 92, 225, 0.2);
+      text-shadow:
+        0 0 14px color-mix(in srgb, var(--hero-type-start) 25%, transparent),
+        0 0 20px color-mix(in srgb, var(--hero-type-end) 20%, transparent);
     }
     @media (forced-colors: active) {
       .mini.hero-about {
