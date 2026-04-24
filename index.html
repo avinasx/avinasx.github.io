@@ -100,6 +100,9 @@
     :root {
       --bg: #0b0d14;
       --bg-soft: #0e1118;
+      --bg-deep: #070910;
+      --bg-mid: #0b0d14;
+      --bg-elevated: #0f1220;
       --card: #0f1220;
       --text: #e8edf5;
       --muted: #8a9ab5;
@@ -116,7 +119,7 @@
       --surface-shell-soft: color-mix(in srgb, var(--bg) 90%, transparent);
       --bg-accent-cyan: radial-gradient(circle at 10% -10%, rgba(118, 240, 255, 0.13), transparent 42%);
       --bg-accent-pink: radial-gradient(circle at 92% 4%, rgba(255, 92, 225, 0.11), transparent 38%);
-      --bg-base-gradient: linear-gradient(180deg, #070910 0%, #0b0d14 52%, #0f1220 100%);
+      --bg-base-gradient: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 52%, var(--bg-elevated) 100%);
       --glow-soft: 0 0 18px color-mix(in srgb, var(--primary) 18%, transparent);
       --glow-medium: 0 0 26px color-mix(in srgb, var(--primary) 24%, transparent);
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
@@ -778,7 +781,11 @@
       margin-top: 0.7rem;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      background: linear-gradient(180deg, rgba(118, 240, 255, 0.03), rgba(255, 92, 225, 0.02));
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--hero-type-start) 10%, transparent),
+        color-mix(in srgb, var(--hero-type-end) 8%, transparent)
+      );
       padding: 1.1rem 0 2rem;
       text-align: center;
       font-size: 0.94rem;
