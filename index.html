@@ -114,8 +114,9 @@
       --surface-grad-strong: linear-gradient(145deg, rgba(118, 240, 255, 0.15), rgba(255, 92, 225, 0.12));
       --surface-shell-strong: color-mix(in srgb, var(--bg) 88%, transparent);
       --surface-shell-soft: color-mix(in srgb, var(--bg) 90%, transparent);
-      --surface-grad-shell-strong: var(--surface-grad), var(--surface-shell-strong);
-      --surface-grad-shell-soft: var(--surface-grad-soft), var(--surface-shell-soft);
+      --bg-accent-cyan: radial-gradient(circle at 10% -10%, rgba(118, 240, 255, 0.13), transparent 42%);
+      --bg-accent-pink: radial-gradient(circle at 92% 4%, rgba(255, 92, 225, 0.11), transparent 38%);
+      --bg-base-gradient: linear-gradient(180deg, #070910 0%, #0b0d14 52%, #0f1220 100%);
       --glow-soft: 0 0 18px color-mix(in srgb, var(--primary) 18%, transparent);
       --glow-medium: 0 0 26px color-mix(in srgb, var(--primary) 24%, transparent);
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
@@ -134,9 +135,9 @@
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-weight: 280;
       background:
-        radial-gradient(circle at 10% -10%, rgba(118, 240, 255, 0.13), transparent 42%),
-        radial-gradient(circle at 92% 4%, rgba(255, 92, 225, 0.11), transparent 38%),
-        linear-gradient(180deg, #070910 0%, #0b0d14 52%, #0f1220 100%);
+        var(--bg-accent-cyan),
+        var(--bg-accent-pink),
+        var(--bg-base-gradient);
       color: var(--text);
       line-height: 1.6;
     }
@@ -297,7 +298,7 @@
       right: 0;
       height: 100%;
       width: min(300px, 80vw);
-      background: var(--surface-grad-shell-strong);
+      background: var(--surface-grad), var(--surface-shell-strong);
       border-left: 1px solid rgba(0, 217, 197, 0.15);
       padding: 5rem 1.5rem 2rem;
       display: flex;
@@ -606,7 +607,7 @@
       border-collapse: collapse;
       min-width: 540px;
       width: 100%;
-      background: var(--surface-grad-shell-soft);
+      background: var(--surface-grad-soft), var(--surface-shell-soft);
     }
 
     th, td {
