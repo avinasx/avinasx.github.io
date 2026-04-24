@@ -107,6 +107,8 @@
       --primary: #00d9c5;
       --accent: #00d9c5;
       --ok: #00d9c5;
+      --hero-type-start: #76f0ff;
+      --hero-type-end: #ff5ce1;
       --mono: 'Orbitron', 'JetBrains Mono', ui-monospace, monospace;
       --tracking-wide: 0.03em;
       --interactive-scale: 1.02;
@@ -377,6 +379,22 @@
       text-transform: none !important;
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       white-space: normal;
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 14px color-mix(in srgb, var(--hero-type-start) 25%, transparent),
+        0 0 20px color-mix(in srgb, var(--hero-type-end) 20%, transparent);
+    }
+    @media (forced-colors: active) {
+      .mini.hero-about {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: CanvasText;
+        text-shadow: none;
+      }
     }
 
     .socials {
@@ -833,7 +851,7 @@
             <p class="headline">Lead Software Engineer/Architect | Full-Stack | Polyglot | Backend | ML | Gen-AI | RAG | Stanford | DU</p>
           </div>
         </div>
-        <p class="mini hero-about">
+        <p class="mini hero-about" data-force-typewriter="true">
           I’m a Lead Software Engineer/Architect focused on backend and full-stack systems, with hands-on delivery in Gen-AI, RAG, cloud-native services, and scalable product engineering across investment banking, pharma R&amp;D, healthcare, and edtech.
         </p>
         <div class="hero-meta">
@@ -1274,6 +1292,34 @@
     (function () {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    const heroAbout = document.querySelector(".mini.hero-about");
+    if (heroAbout) {
+      const fullText = heroAbout.textContent.trim();
+      if (fullText) {
+        const forceTypewriter = heroAbout.dataset.forceTypewriter === "true";
+        const shouldRunTypewriter = forceTypewriter || !prefersReducedMotion;
+        if (!shouldRunTypewriter) {
+          heroAbout.textContent = fullText;
+        } else {
+          heroAbout.textContent = "";
+          const CHARACTER_DELAY_MS = 35;
+          let charIndex = 0;
+          const timerId = window.setInterval(() => {
+            if (!heroAbout.isConnected) {
+              window.clearInterval(timerId);
+              return;
+            }
+            charIndex += 1;
+            heroAbout.textContent = fullText.slice(0, charIndex);
+            if (charIndex >= fullText.length) {
+              window.clearInterval(timerId);
+            }
+          }, CHARACTER_DELAY_MS);
+          window.addEventListener("beforeunload", () => window.clearInterval(timerId), { once: true });
+        }
+      }
+    }
+
     if (prefersReducedMotion) return;
 
     function runAnimation(target, keyframes, options) {
@@ -1382,27 +1428,6 @@
       });
     }
 
-    const heroAbout = document.querySelector(".mini.hero-about");
-    if (heroAbout) {
-      const fullText = heroAbout.textContent.trim();
-      if (fullText) {
-        heroAbout.textContent = "";
-        const CHARACTER_DELAY_MS = 35;
-        let charIndex = 0;
-        const timerId = window.setInterval(() => {
-          if (!heroAbout.isConnected) {
-            window.clearInterval(timerId);
-            return;
-          }
-          charIndex += 1;
-          heroAbout.textContent = fullText.slice(0, charIndex);
-          if (charIndex >= fullText.length) {
-            window.clearInterval(timerId);
-          }
-        }, CHARACTER_DELAY_MS);
-        window.addEventListener("beforeunload", () => window.clearInterval(timerId), { once: true });
-      }
-    }
     })();
   </script>
 </body>
