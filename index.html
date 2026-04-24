@@ -1297,7 +1297,7 @@
       const fullText = heroAbout.textContent.trim();
       if (fullText) {
         const forceTypewriter = heroAbout.dataset.forceTypewriter === "true";
-        const shouldRunTypewriter = !(prefersReducedMotion && !forceTypewriter);
+        const shouldRunTypewriter = forceTypewriter || !prefersReducedMotion;
         if (!shouldRunTypewriter) {
           heroAbout.textContent = fullText;
         } else {
@@ -1309,8 +1309,8 @@
               window.clearInterval(timerId);
               return;
             }
-            heroAbout.textContent = fullText.slice(0, charIndex + 1);
             charIndex += 1;
+            heroAbout.textContent = fullText.slice(0, charIndex);
             if (charIndex >= fullText.length) {
               window.clearInterval(timerId);
             }
