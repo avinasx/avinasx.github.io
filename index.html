@@ -386,6 +386,14 @@
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 14px rgba(118, 240, 255, 0.25), 0 0 20px rgba(255, 92, 225, 0.2);
     }
+    @media (forced-colors: active) {
+      .mini.hero-about {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: CanvasText;
+        text-shadow: none;
+      }
+    }
 
     .socials {
       display: flex;
