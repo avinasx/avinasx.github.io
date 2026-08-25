@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Avinash Kumar Shudhanshu | Software Engineer @ Google | Gen-AI | Lead | Backend | Architect | WSE | Full-Stack | Polyglot | ML | RAG | Stanford | DU</title>
-  <meta name="description" content="Avinash Kumar Shudhanshu — Software Engineer @ Google, Web Solutions Engineer within Digital Support Experience, with 7+ years in full-stack, polyglot backend, ML, Gen-AI, and RAG systems." />
+  <meta name="description" content="Avinash Kumar Shudhanshu — Software Engineer @ Google, Web Solutions Engineer within Digital Support Experience, with 7+ years in full-stack, polyglot backend, ML, Gen-AI & RAG systems." />
   <meta name="author" content="Avinash Kumar Shudhanshu" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="theme-color" content="#00d9c5" />
@@ -18,7 +18,7 @@
   <meta property="og:site_name" content="Avinash Kumar Shudhanshu" />
   <meta property="og:url" content="https://avinasx.github.io/" />
   <meta property="og:title" content="Avinash Kumar Shudhanshu | Software Engineer @ Google | Gen-AI | Lead | Backend | Architect | WSE | Full-Stack | Polyglot | ML | RAG | Stanford | DU" />
-  <meta property="og:description" content="Avinash Kumar Shudhanshu — Software Engineer @ Google, Web Solutions Engineer within Digital Support Experience, with 7+ years in full-stack, polyglot backend, ML, Gen-AI, and RAG systems." />
+  <meta property="og:description" content="Avinash Kumar Shudhanshu — Software Engineer @ Google, Web Solutions Engineer within Digital Support Experience, with 7+ years in full-stack, polyglot backend, ML, Gen-AI & RAG systems." />
   <meta property="og:image" content="https://avinasx.github.io/images/avatar.png" />
   <meta property="og:image:alt" content="Portrait of Avinash Kumar Shudhanshu" />
   <meta property="og:image:width" content="400" />
@@ -31,7 +31,7 @@
   <meta name="twitter:site" content="@Avinymous" />
   <meta name="twitter:creator" content="@Avinymous" />
   <meta name="twitter:title" content="Avinash Kumar Shudhanshu | Software Engineer @ Google | Gen-AI | Lead | Backend | Architect | WSE | Full-Stack | Polyglot | ML | RAG | Stanford | DU" />
-  <meta name="twitter:description" content="Avinash Kumar Shudhanshu — Software Engineer @ Google, Web Solutions Engineer within Digital Support Experience, with 7+ years in full-stack, polyglot backend, ML, Gen-AI, and RAG systems." />
+  <meta name="twitter:description" content="Avinash Kumar Shudhanshu — Software Engineer @ Google, Web Solutions Engineer within Digital Support Experience, with 7+ years in full-stack, polyglot backend, ML, Gen-AI & RAG systems." />
   <meta name="twitter:image" content="https://avinasx.github.io/images/avatar.png" />
   <meta name="twitter:image:alt" content="Portrait of Avinash Kumar Shudhanshu" />
 
@@ -52,7 +52,7 @@
         },
         "email": "avinashsudhanshu@gmail.com",
         "jobTitle": "Software Engineer @ Google",
-        "description": "Software Engineer @ Google and Web Solutions Engineer within the Digital Support Experience team, with 7+ years of experience in full-stack, polyglot backend, ML, Gen-AI, and RAG systems.",
+        "description": "Software Engineer @ Google and Web Solutions Engineer within the Digital Support Experience team, with 7+ years of experience in full-stack, polyglot backend, ML, Gen-AI, RAG, and cloud-native systems.",
         "knowsAbout": [
           "Backend Engineering",
           "Full-Stack Development",
@@ -135,12 +135,749 @@
       --max: 1160px;
       --shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
     }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: 280;
+      background:
+        var(--bg-accent-cyan),
+        var(--bg-accent-pink),
+        var(--bg-base-gradient);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-weight: 500; }
+    strong, b { font-weight: 500; }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .section { padding: 1.3rem 0 3rem; }
+
+    /* ── Topbar / Nav ─────────────────────────────────────────── */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 217, 197, 0.12);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      box-shadow: var(--glow-soft);
+    }
+
+    .topbar nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-resume {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 217, 197, 0.4);
+      background: var(--surface-grad-soft);
+      color: var(--primary);
+      padding: 0.3rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .nav-resume:hover { text-decoration: none; background: var(--surface-grad); box-shadow: var(--glow-soft); }
+
+    .brand {
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 10px color-mix(in srgb, var(--hero-type-start) 16%, transparent),
+        0 0 16px color-mix(in srgb, var(--hero-type-end) 14%, transparent);
+      flex-shrink: 0;
+    }
+
+    /* Desktop nav links */
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      justify-content: flex-end;
+    }
+
+    .menu a {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 400;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(0, 217, 197, 0.22);
+      border-radius: 999px;
+      background: var(--surface-grad-soft);
+      letter-spacing: 0.03em;
+      transition: color 0.18s, border-color 0.18s;
+    }
+
+    .menu a:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--surface-grad);
+      text-decoration: none;
+    }
+
+    /* Hamburger button — hidden on desktop */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: var(--surface-grad-soft);
+      border: 1px solid rgba(0, 217, 197, 0.3);
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    /* Animated to ✕ when open */
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      pointer-events: none;
+    }
+
+    .mobile-drawer.open {
+      pointer-events: all;
+    }
+
+    .drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .mobile-drawer.open .drawer-overlay {
+      opacity: 1;
+    }
+
+    .drawer-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: min(300px, 80vw);
+      background: var(--surface-drawer);
+      border-left: 1px solid rgba(0, 217, 197, 0.15);
+      padding: 5rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.open .drawer-panel {
+      transform: translateX(0);
+    }
+
+    .drawer-panel a {
+      display: block;
+      padding: 0.85rem 0;
+      font-family: var(--mono);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(0, 217, 197, 0.12);
+    }
+
+    .drawer-panel a:last-child { border-bottom: none; }
+    .drawer-panel a:hover { color: var(--primary); text-decoration: none; }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+
+    .hero {
+      padding: 2.5rem 0 1.8rem;
+    }
+
+    .hero-intro {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(0, 217, 197, 0.4);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-card {
+      background: var(--surface-grad-strong);
+      border: 1px solid rgba(0, 217, 197, 0.15);
+      border-radius: 22px;
+      padding: clamp(1rem, 2.5vw, 2rem);
+      box-shadow: var(--shadow), var(--glow-soft);
+      animation: rise 650ms ease both;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(8px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      margin: 0;
+      line-height: 1.2;
+      font-size: clamp(1.65rem, 5.2vw, 3.1rem);
+      word-break: break-word;
+      font-family: var(--mono);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .headline {
+      margin: 0.6rem 0 1rem;
+      color: var(--muted);
+      font-weight: 350;
+      font-size: clamp(0.88rem, 2.2vw, 1.15rem);
+      word-break: break-word;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 1rem;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .hero-meta strong { white-space: nowrap; }
+
+    .hero-about {
+      margin-bottom: 2rem;
+      text-transform: none;
+    }
+    .mini.hero-about {
+      letter-spacing: normal;
+      text-transform: none !important;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      white-space: normal;
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 14px color-mix(in srgb, var(--hero-type-start) 25%, transparent),
+        0 0 20px color-mix(in srgb, var(--hero-type-end) 20%, transparent);
+    }
+    @media (forced-colors: active) {
+      .mini.hero-about {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: CanvasText;
+        text-shadow: none;
+      }
+
+      .brand,
+      .section-title,
+      #skills .card h3,
+      #credentials .card h3,
+      #contact .card h3 {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: CanvasText;
+        text-shadow: none;
+      }
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 0.5rem 0 1.35rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 217, 197, 0.35);
+      background: var(--surface-grad-soft);
+      color: var(--text);
+      touch-action: manipulation;
+      flex-shrink: 0;
+      box-shadow: var(--glow-soft);
+    }
+
+    .chip svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .chip:hover { text-decoration: none; border-color: var(--primary); color: var(--primary); }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 217, 197, 0.4);
+      background: var(--surface-grad-soft);
+      color: var(--primary);
+      padding: 0.65rem 1.2rem;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      touch-action: manipulation;
+      white-space: nowrap;
+      box-shadow: var(--glow-soft);
+    }
+
+    .btn:hover { text-decoration: none; border-color: var(--primary); background: var(--surface-grad); box-shadow: var(--glow-medium); }
+
+    .btn.primary {
+      border-color: var(--primary);
+      background: var(--surface-grad-strong);
+      color: var(--primary);
+    }
+
+    /* ── Stats grid: 4-col → 2×2 → 1-col ─────────────────────── */
+
+    .stats {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .stat {
+      background: var(--surface-grad);
+      border: 1px solid rgba(0, 217, 197, 0.2);
+      border-radius: 12px;
+      padding: 0.7rem;
+      text-align: center;
+      box-shadow: var(--glow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .stat span {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* ── Section titles ───────────────────────────────────────── */
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.3vw, 2rem);
+      margin: 0 0 0.6rem;
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 10px color-mix(in srgb, var(--hero-type-start) 16%, transparent),
+        0 0 16px color-mix(in srgb, var(--hero-type-end) 14%, transparent);
+      font-family: var(--mono);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    /* ── Grids ────────────────────────────────────────────────── */
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    /* ── Cards ────────────────────────────────────────────────── */
+
+    .card {
+      background: var(--surface-grad);
+      border: 1px solid rgba(0, 217, 197, 0.15);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: var(--shadow), var(--glow-soft);
+    }
+    .card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.08rem;
+    }
+
+    #skills .card h3,
+    #credentials .card h3,
+    #contact .card h3 {
+      color: var(--hero-type-start);
+      background: linear-gradient(92deg, var(--hero-type-start), var(--hero-type-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 8px color-mix(in srgb, var(--hero-type-start) 16%, transparent),
+        0 0 12px color-mix(in srgb, var(--hero-type-end) 14%, transparent);
+    }
+
+    .mini {
+      font-family: var(--mono);
+      color: var(--primary);
+      margin: 0.6rem 0 0.35rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Table (academic profile) ─────────────────────────────── */
+
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 217, 197, 0.15);
+    }
+
+    table {
+      border-collapse: collapse;
+      min-width: 540px;
+      width: 100%;
+      background: var(--surface-table);
+    }
+
+    th, td {
+      border: 1px solid rgba(0, 217, 197, 0.1);
+      padding: 0.72rem 0.9rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(0, 217, 197, 0.07);
+      color: var(--primary);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    td { color: var(--text); }
+
+    /* ── Timeline ─────────────────────────────────────────────── */
+
+    .timeline {
+      border-left: 2px solid rgba(0, 217, 197, 0.3);
+      margin-left: 0.6rem;
+      padding-left: 1.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .item {
+      position: relative;
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -1.85rem;
+      top: 1.05rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--ok);
+      border: 2px solid var(--bg);
+    }
+
+    .role {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .meta {
+      margin: 0.25rem 0 0.45rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+
+    ul {
+      margin: 0.3rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    li { margin: 0.36rem 0; }
+
+    /* ── Accordions ───────────────────────────────────────────── */
+
+    details {
+      border-radius: 12px;
+      border: 1px solid rgba(0, 217, 197, 0.15);
+      background: var(--surface-grad-soft);
+      padding: 0.62rem 0.75rem;
+      margin-top: 0.6rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--primary);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 0.5rem;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    summary::before {
+      content: "▸";
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary::marker { content: ""; }
+
+    details[open] > summary::before {
+      transform: rotate(90deg);
+    }
+
+    /* ── Skill pills ──────────────────────────────────────────── */
+
+    .skill-pill {
+      display: inline-block;
+      margin: 0.25rem 0.35rem 0.25rem 0;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid rgba(0, 217, 197, 0.3);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text);
+      background: var(--surface-grad-soft);
+      word-break: break-word;
+    }
+
+    /* ── Skill bars ───────────────────────────────────────────── */
+
+    .bars {
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.7rem;
+    }
+
+    .bar {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .bar span {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .track {
+      border-radius: 999px;
+      height: 8px;
+      background: rgba(0, 217, 197, 0.1);
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #00d9c5, #00ffd5);
+      transform-origin: left;
+      animation: grow 900ms ease both;
+    }
+
+    @keyframes grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+
+    .footer {
+      margin-top: 0.7rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--surface-footer);
+      padding: 1.1rem 0 2rem;
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    /* ── Responsive: ≤ 900px (tablet) ─────────────────────────── */
+
+    @media (max-width: 900px) {
+      .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* ── Responsive: ≤ 768px (mobile) ─────────────────────────── */
+
+    @media (max-width: 768px) {
+      .menu { display: none; }
+      .nav-resume { display: none; }
+      .hamburger { display: flex; }
+      .mobile-drawer { display: block; }
+
+      .grid.two,
+      .grid.three { grid-template-columns: 1fr; }
+
+      .hero { padding: 1.8rem 0 1.2rem; }
+      .section { padding: 1rem 0 2rem; }
+      .hero-intro { grid-template-columns: 1fr; }
+      .profile-photo { width: 96px; height: 96px; }
+      .hero-about { margin-bottom: 1.4rem; }
+      .socials { margin-bottom: 1.1rem; }
+
+      .role { font-size: 0.98rem; }
+    }
+
+    /* ── Responsive: ≤ 480px (small phones) ───────────────────── */
+
+    @media (max-width: 480px) {
+      .container { width: calc(100% - 1.4rem); }
+
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stat strong { font-size: 0.9rem; }
+      .stat span { font-size: 0.75rem; }
+
+      .hero-card { border-radius: 14px; }
+      .card { border-radius: 12px; padding: 0.85rem; }
+
+      h1 { font-size: clamp(1.4rem, 7vw, 1.9rem); }
+      .headline { font-size: clamp(0.82rem, 3.5vw, 1rem); }
+
+      .actions { gap: 0.55rem; }
+      .btn { font-size: 0.9rem; padding: 0.6rem 0.9rem; }
+
+      .timeline {
+        margin-left: 0.4rem;
+        padding-left: 1rem;
+      }
+
+      .item::before { left: -1.45rem; top: 0.9rem; }
+
+      .hero-meta { font-size: 0.88rem; }
+
+      details { padding: 0.5rem 0.6rem; }
+      summary { font-size: 0.9rem; }
+    }
+
+    /* ── Contact card: prevent long URLs overflowing ──────────── */
+
+    .card a, .card li { overflow-wrap: break-word; word-break: break-word; }
+
+    .btn, .chip, .card, .menu a, .drawer-panel a, summary {
+      transition: transform 0.2s ease;
+      transform: scale(1);
+      transform-origin: center;
+    }
+
+    .btn:hover, .btn:focus-visible,
+    .chip:hover, .chip:focus-visible,
+    .card:hover, .card:focus-within,
+    .menu a:hover, .menu a:focus-visible,
+    .drawer-panel a:hover, .drawer-panel a:focus-visible,
+    summary:hover, summary:focus-visible {
+      transform: scale(var(--interactive-scale));
+    }
   </style>
 </head>
 <body>
   <header class="topbar">
     <nav class="container" aria-label="Primary">
       <div class="brand">AK</div>
+      <!-- Desktop links -->
       <div class="menu" id="desktopMenu">
         <a href="#about">01 About</a>
         <a href="#education">02 Education</a>
@@ -151,11 +888,26 @@
         <a href="#contact">07 Contact</a>
       </div>
       <a class="nav-resume resume-link" href="./Avinash_resume_Aug_18_26.pdf" target="_blank" rel="noopener noreferrer" id="navResume">Resume</a>
+      <!-- Hamburger (mobile only) -->
       <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileDrawer">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </header>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation" aria-hidden="true" hidden inert>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="drawer-panel">
+      <a href="#about">01 About</a>
+      <a href="#education">02 Education</a>
+      <a href="#experience">03 Experience</a>
+      <a href="#skills">04 Skills</a>
+      <a href="#credentials">05 Credentials</a>
+      <a href="#publications">06 Publications</a>
+      <a href="#contact">07 Contact</a>
+    </nav>
+  </div>
 
   <main>
     <section id="about" class="hero">
@@ -167,11 +919,117 @@
             <p class="headline">Software Engineer @ Google | Gen-AI | Lead | Backend | Architect | WSE | Full-Stack | Polyglot | ML | RAG | Stanford | DU</p>
           </div>
         </div>
+        <p class="mini hero-about" data-force-typewriter="true">
+          I’m a Lead Software Engineer/Architect focused on backend and full-stack systems, with hands-on delivery in Gen-AI, RAG, cloud-native services, and scalable product engineering across enterprise and consumer contexts.
+        </p>
+        <div class="hero-meta">
+          <span><strong>Email:</strong> <a href="mailto:avinashsudhanshu@gmail.com">avinashsudhanshu@gmail.com</a></span>
+          <span><strong>Location:</strong> India</span>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <!-- Website / Globe -->
+          <a class="chip" href="https://avinasx.github.io" target="_blank" rel="noopener noreferrer" title="Website" aria-label="Website">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-1.07 0-2.1-.19-3.09-.54.86-.98 1.48-2.18 1.79-3.46h2.6c.31 1.28.93 2.48 1.79 3.46-.99.35-2.02.54-3.09.54zm-4.67-1.31A7.96 7.96 0 0 1 4 12c0-.58.06-1.14.16-1.69h3.06c-.12 1.84-.12 3.56.11 5.07zm.82-6.69H4.78A8.02 8.02 0 0 1 8 4.63c-.49 1.05-.79 2.25-.93 3.37zM11 4.07c-.7.81-1.3 2.13-1.65 3.93H12V4.02c-.33 0-.67.01-1 .05zM13 4.02V8h2.65c-.35-1.8-.95-3.12-1.65-3.93-.33-.04-.67-.05-1-.05zm4.22.61A8.02 8.02 0 0 1 19.22 10.31h-3.06c-.14-1.12-.44-2.32-.93-3.37zm-1.11 6.75h3.06A7.96 7.96 0 0 1 16.67 18.69c.23-1.51.23-3.23.11-5.07zM12 10h-2.98c-.11 1.56-.11 3.24.1 5h2.88v-5zm2.98 0H12v5h2.88c.21-1.76.21-3.44.1-5z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a class="chip" href="https://www.linkedin.com/in/avinash-kumar-shudhanshu-3aa13327/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.6H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.369-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.06 2.06 0 1 1 0-4.119 2.06 2.06 0 0 1 0 4.119zM6.996 20.452H3.677V9h3.319v11.452z"/></svg>
+          </a>
+          <!-- GitHub -->
+          <a class="chip" href="https://github.com/avinasx" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.304 3.495.997.107-.776.42-1.304.763-1.604-2.665-.304-5.467-1.333-5.467-5.931 0-1.31.467-2.381 1.235-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.48 11.48 0 0 1 6.003 0c2.291-1.552 3.298-1.23 3.298-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.805 5.624-5.476 5.921.43.371.823 1.102.823 2.222 0 1.604-.014 2.898-.014 3.293 0 .321.218.694.825.576C20.565 22.092 24 17.595 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <!-- X / Twitter -->
+          <a class="chip" href="https://x.com/Avinymous" target="_blank" rel="noopener noreferrer" title="X (Twitter)" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.25 2.25h7.08l4.237 5.586 5.677-5.586zm-1.161 17.52h1.833L7.334 4.126H5.368l11.715 15.644z"/></svg>
+          </a>
+          <!-- StackExchange -->
+          <a class="chip" href="https://stackexchange.com/users/8009309/codechari?tab=accounts" target="_blank" rel="noopener noreferrer" title="StackExchange" aria-label="StackExchange">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.36-1.643-8.216-6.851zm-2.6 3.43l-.86 1.99 8.856 4.35.86-1.99-8.856-4.35zM8.45 12.4l-.34 2.13 8.998 1.43.34-2.13-8.998-1.43zm-.41 3.53V24h8.06v-8.07H8.04z"/></svg>
+          </a>
+          <!-- ResearchGate -->
+          <a class="chip" href="https://www.researchgate.net/profile/Avinash_Shudhanshu" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.001 12.001 0 0 0-.208 1.284H10.5v2.8h2.79c.04.447.15.89.329 1.318l-3.412 1.85c-.687-.721-1.61-1.093-2.776-1.093-1.201 0-2.188.403-2.958 1.209-.77.804-1.156 1.91-1.156 3.316 0 1.35.382 2.413 1.145 3.188.764.774 1.721 1.162 2.874 1.162 1.006 0 1.83-.262 2.47-.786.641-.525 1.073-1.116 1.294-1.774h2.766V24h3.17v-8.48h2.17v-2.97h-2.17v-1.44c0-1.495-.337-2.674-1.012-3.538-.674-.864-1.571-1.296-2.688-1.296-.559 0-1.093.105-1.602.316-.51.211-.953.479-1.329.804L7.91 7.395c.179-.428.288-.871.329-1.318h2.761V3.535H8.238c.024-.586.104-1.056.238-1.411.133-.355.342-.533.627-.533.263 0 .46.08.594.24.135.161.201.44.201.838h2.1c0-.945-.25-1.697-.751-2.257C10.746.315 9.982 0 8.96 0c-.82 0-1.5.184-2.038.553-.538.369-.925.956-1.16 1.76-.236.804-.346 1.732-.331 2.784h-1.67v2.793h1.814c.003 2.15.516 3.92 1.54 5.31 1.023 1.39 2.323 2.085 3.899 2.085 1.114 0 2.093-.262 2.937-.786.845-.524 1.468-1.28 1.871-2.266v5.53h2.275c0 1.11-.24 2.087-.72 2.931-.48.844-1.256 1.266-2.326 1.266-.923 0-1.654-.251-2.194-.754-.54-.502-.81-1.156-.81-1.963h-2.02c0 1.2.393 2.15 1.178 2.852.785.7 1.816 1.051 3.093 1.051 1.451 0 2.583-.56 3.398-1.682.814-1.122 1.222-2.684 1.222-4.688V6.3h2.155V3.535h-2.155V2.8h2.155V0h-2.155c-.004-.722-.168-1.34-.495-1.852C20.93.69 20.309.392 19.586 0z"/></svg>
+          </a>
+        </div>
+
         <div class="actions">
           <a class="btn primary resume-link" href="./Avinash_resume_Aug_18_26.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+          <a class="btn" href="#experience">Explore Experience</a>
+        </div>
+
+        <div class="stats" aria-label="Profile highlights">
+          <div class="stat"><strong>7+ Years</strong><span>Engineering Experience</span></div>
+          <div class="stat"><strong>5 Roles</strong><span>Across Product Domains</span></div>
+          <div class="stat"><strong>Gen-AI + RAG</strong><span>Production Delivery</span></div>
+          <div class="stat"><strong>AWS • Azure • GCP</strong><span>Cloud Engineering</span></div>
         </div>
       </div>
     </section>
-  </main>
-</body>
-</html>
+
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Academic Profile</h2>
+        <p class="section-desc">Education details aligned to the latest resume format.</p>
+        <div class="table-wrap card">
+          <table aria-label="Academic profile table">
+            <thead>
+              <tr>
+                <th>Degree</th>
+                <th>Year</th>
+                <th>Major</th>
+                <th>Institution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>M.Sc. Informatics</strong></td>
+                <td>2019</td>
+                <td>Information Technology and Computer Networks</td>
+                <td>University of Delhi</td>
+              </tr>
+              <tr>
+                <td><strong>B.Sc. Electronics</strong></td>
+                <td>2017</td>
+                <td>Electronics and Communication</td>
+                <td>University of Delhi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <p class="section-desc">Total Experience: 7 Years</p>
+        <div class="timeline">
+          <article class="card item">
+            <h3 class="role">Web Solutions Engineer — Google, Bengaluru, Karnataka, India (Hybrid)</h3>
+            <p class="meta">Jul 2026 – Present | Domain: Digital Support Experience | Full-time</p>
+            <details open>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Design, build, and scale AI agents and intelligent automation tools that optimize operations and improve the Google Cloud support experience.</li>
+                <li>Architect and deploy context-aware AI agents using Google internal LLM frameworks and Gemini APIs to automate complex support workflows and reduce resolution times.</li>
+                <li>Develop robust full-stack automation tools and internal supportability platforms across Google Cloud Platform, modern JavaScript/Python frameworks, APIs, and cloud-native databases.</li>
+                <li>Partner with Supportability, Strategy, and Engineering teams to translate complex business requirements into reliable, production-grade applications.</li>
+                <li>Focus on scalability, supportability, testing, and continuous deployment to establish reusable engineering practices for internal platforms.</li>
+              </ul>
+            </details>
+          </article>
+          <article class="card item">
+            <h3 class="role">Technical Lead — Carlyle Group (Vichara), Remote, India</h3>
+            <p class="meta">Feb 2026 – Current | Domain: Investment Banking | <a href="https://www.carlyle.com/" target="_blank" rel="noopener noreferrer">carlyle.com</a></p>
+            <details open>
+              <summary>Key contributions</summary>
+              <ul>
+                <li>Architected a benchmark-driven pricing engine integrating Snowflake and Postgres to automate scalable, audit-grade market yield computation with AI-assisted validation and financial time-series analytics.</li>
+                <li>Designed cross-system data architecture for weighted benchmarks, versioned compositions, and dynamic rate resolution (WA yield, illiquidity premium, risk adjustments) with caching and batch optimisation.</li>
+                <li>Built high-performance analytics pipelines and Snowflake service layers enabling idempotent ingestion, data quality controls, and anomaly-aware coverage tracking.</li>
+                <li>Preserved backward compatibility by decoupling AI-enabled discount-rate resolution from legacy cashflow models, ensuring deterministic and regression-safe valuations.</li>
+              </ul>
+            </details>
+          </article>
