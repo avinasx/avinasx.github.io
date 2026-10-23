@@ -1,3 +1,0 @@
-# avinasx.github.io
-Portfolio
-
